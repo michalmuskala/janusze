@@ -19,6 +19,7 @@ gem 'carrierwave'
 gem 'foreman', github: 'hsume2/foreman'
 
 gem 'devise'
+gem 'devise-bootstrap-views'
 
 group :development, :test do
   gem 'spring'
