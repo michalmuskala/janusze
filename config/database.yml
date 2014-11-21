@@ -85,5 +85,7 @@ test:
 production:
   <<: *default
   database: janusze_production
-  username: janusze
+  host: 159.8.128.86
+  port: 5433
+  username: <%= ENV['JANUSZE_DATABASE_USER']
   password: <%= ENV['JANUSZE_DATABASE_PASSWORD'] %>
