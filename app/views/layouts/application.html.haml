@@ -20,7 +20,7 @@
             %li{ :class => ('active' if active_page?(:home)) }
               %a{ :href => root_url } Home
             %li{ :class => ('active' if active_page?(:tests)) }
-              %a{ :href => tests_path } Tests
+              %a{ :href => root_url } Tests
           - unless current_user
             = simple_form_for(User.new, :url => login_path, :html => { :class => 'navbar-form navbar-right' }) do |f|
               = f.input :email, :label => false, :placeholder => 'Your e-mail'

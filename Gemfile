@@ -11,7 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
 gem 'pry-byebug'
 
-gem 'boostrap-sass'
+gem 'bootstrap-sass'
 gem 'haml'
 gem 'simple_form'
 
