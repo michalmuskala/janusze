@@ -20,6 +20,8 @@ gem 'foreman', github: 'hsume2/foreman'
 
 gem 'devise'
 gem 'devise-bootstrap-views'
+gem 'rolify'
+gem 'cancancan'
 
 group :development, :test do
   gem 'spring'
