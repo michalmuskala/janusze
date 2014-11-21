@@ -12,6 +12,7 @@ gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
 gem 'pry-byebug'
 
 gem 'bootstrap-sass'
+gem 'bootstrap-generators'
 gem 'haml'
 gem 'simple_form'
 
@@ -28,6 +29,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
+  gem 'annotate'
 end
 
 gem 'traceur-rails'
