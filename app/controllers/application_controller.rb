@@ -11,8 +11,4 @@ class ApplicationController < ActionController::Base
     @page == page
   end
   helper_method :active_page?
-
-  def home
-    active_page :home
-  end
 end

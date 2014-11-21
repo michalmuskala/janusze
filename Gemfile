@@ -28,5 +28,5 @@ group :development, :test do
 end
 
 gem 'traceur-rails'
-
 gem 'select2-rails'
+gem 'puma'
