@@ -1,0 +1,45 @@
+!!!
+%html
+  %head
+    %title Janusz
+    = stylesheet_link_tag    'application', :media => 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body
+    .navbar.navbar-inverse.navbar-fixed-top{ :role => 'navigation' }
+      .container
+        .navbar-header
+          %button.navbar-toggle.collapsed{ :type => :button, :data => { :toggle => 'collapse', :target => '.navbar-collapse' } }
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{ :href => root_url } Janusz
+        .collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li{ :class => ('active' if active_page?(:home)) }
+              %a{ :href => root_url } Home
+            %li{ :class => ('active' if active_page?(:tests)) }
+              %a{ :href => tests_path } Tests
+          - unless current_user
+            = simple_form_for(User.new, :url => login_path, :html => { :class => 'navbar-form navbar-right' }) do |f|
+              = f.input :email, :label => false, :placeholder => 'Your e-mail'
+              = f.button :submit, 'Sign in', :class => 'btn-success'
+          - if current_user
+            = button_to 'Logout', logout_path, :method => :get, :class => 'navbar-form navbar-right btn-info'
+
+    .container
+      - flash.each do |key, value|
+        .alert.alert-dismissible{ :class => alert_class(key), :role => 'alert' }
+          %button.close{ :type => :button, :data => { :dismiss => 'alert' } }
+            %span{ :'aria-hidden' => true }
+              &times;
+            %span.sr-only Close
+          = flash[key]
+
+      = yield
+
+    .footer
+      .container
+        %p.text-muted
+          Place sticky footer content here.

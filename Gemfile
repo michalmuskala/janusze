@@ -24,3 +24,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'quiet_assets'
 end
+
+gem 'traceur-rails'
+
+gem 'select2-rails'
