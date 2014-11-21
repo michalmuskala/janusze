@@ -22,11 +22,11 @@
             %li{ :class => ('active' if active_page?(:tests)) }
               %a{ :href => root_url } Tests
           - unless current_user
-            = simple_form_for(User.new, :url => login_path, :html => { :class => 'navbar-form navbar-right' }) do |f|
+            = simple_form_for(User.new, :url => new_user_session_path, :html => { :class => 'navbar-form navbar-right' }) do |f|
               = f.input :email, :label => false, :placeholder => 'Your e-mail'
               = f.button :submit, 'Sign in', :class => 'btn-success'
           - if current_user
-            = button_to 'Logout', logout_path, :method => :get, :class => 'navbar-form navbar-right btn-info'
+            = button_to 'Logout', destroy_user_session_path, :method => :delete, :class => 'navbar-form navbar-right btn-info'
 
     .container
       - flash.each do |key, value|
