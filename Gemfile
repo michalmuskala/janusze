@@ -18,6 +18,8 @@ gem 'simple_form'
 gem 'carrierwave'
 gem 'foreman', github: 'hsume2/foreman'
 
+gem 'devise'
+
 group :development, :test do
   gem 'spring'
   gem 'better_errors'
