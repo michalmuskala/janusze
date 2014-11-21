@@ -87,5 +87,5 @@ production:
   database: janusze_production
   host: 159.8.128.86
   port: 5433
-  username: <%= ENV['JANUSZE_DATABASE_USER']
+  username: <%= ENV['JANUSZE_DATABASE_USER'] %>
   password: <%= ENV['JANUSZE_DATABASE_PASSWORD'] %>
