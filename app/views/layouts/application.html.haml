@@ -23,10 +23,13 @@
               %a{ :href => projects_path } Projects
           - unless current_user
             = simple_form_for(User.new, :url => new_user_session_path, :html => { :class => 'navbar-form navbar-right' }) do |f|
-              = f.input :email, :label => false, :placeholder => 'Your e-mail'
-              = f.button :submit, 'Sign in', :class => 'btn-success'
+              = f.input :email, :label => false, :placeholder => 'E-mail'
+              = f.input :password, :label => false, :placeholder => 'Password'
+              = f.button :submit, 'Sign In', :class => 'btn-success'
+              %a.btn.btn-primary{ :href => new_user_registration_path }
+                Sign Up
           - if current_user
-            = button_to 'Logout', destroy_user_session_path, :method => :delete, :class => 'navbar-form navbar-right btn-info'
+            = button_to 'Logout', destroy_user_session_path, :method => :delete, :form_class => 'navbar-form navbar-right', :class => 'btn btn-danger'
 
     .container
       - flash.each do |key, value|

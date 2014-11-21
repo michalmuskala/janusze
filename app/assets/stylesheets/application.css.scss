@@ -40,3 +40,22 @@ body > .container {
   padding-right: 15px;
   padding-left: 15px;
 }
+
+.slim-centred-form {
+  width: 300px;
+  margin: 0 auto;
+
+  h2.form-title {
+    text-align: center;
+  }
+}
+
+form {
+  .form-group.boolean {
+    .controls {
+      input[type=checkbox] {
+        margin-right: 10px;
+      }
+    }
+  }
+}

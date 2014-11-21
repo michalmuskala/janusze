@@ -1,0 +1,10 @@
+= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'slim-centred-form'}) do |f|
+  %h2.form-title Log in
+  = f.error_notification
+  .form-inputs
+    = f.input :email, :required => true, :autofocus => true, :label => false, :placeholder => 'Email'
+    = f.input :password, :required => true, :hint => ("#{@minimum_password_length} characters minimum" if @validatable), :label => false, :placeholder => 'Password'
+    = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
+  .form-actions
+    = f.button :submit, 'Log in', :class => 'btn-primary btn-block'
+= render "devise/shared/links"

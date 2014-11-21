@@ -1,0 +1,11 @@
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'slim-centred-form'}) do |f|
+  %h2.form-title Sign up
+  = f.error_notification
+  .form-inputs
+    = f.input :email, :required => true, :autofocus => true, :label => false, :placeholder => 'Email'
+    = f.input :name, :required => true, :autofocus => true, :label => false, :placeholder => 'Username (defaults to email login)'
+    = f.input :password, :required => true, :hint => ("#{@minimum_password_length} characters minimum" if @validatable), :label => false, :placeholder => 'Password'
+    = f.input :password_confirmation, :required => true, :label => false, :placeholder => 'Confirm password'
+  .form-actions
+    = f.button :submit, 'Sign up', :class => 'btn-primary btn-block'
+= render "devise/shared/links"

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :projects
-
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => 'users' }
   root to: 'static#home'
+
+  resources :projects
 end

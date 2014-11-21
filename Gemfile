@@ -13,13 +13,13 @@ gem 'pry-byebug'
 
 gem 'bootstrap-sass'
 gem 'haml-rails'
-gem 'simple_form'
+gem 'simple_form', :github => 'plataformatec/simple_form'
 
 gem 'carrierwave'
 gem 'foreman', github: 'hsume2/foreman'
 
 gem 'devise'
-gem 'devise-bootstrap-views'
+gem 'erb2haml'
 gem 'rolify'
 gem 'cancancan'
 
