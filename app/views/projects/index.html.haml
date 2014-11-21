@@ -1,0 +1,24 @@
+.page-header
+  = link_to new_project_path, :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Project
+  %h1 Listing projects
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Description
+        %th
+        %th
+        %th
+
+    %tbody
+      - @projects.each do |project|
+        %tr
+          %td= project.name
+          %td= project.description
+          %td= link_to 'Show', project
+          %td= link_to 'Edit', edit_project_path(project)
+          %td= link_to 'Destroy', project, :data => { confirm: 'Are you sure?' }, :method => :delete

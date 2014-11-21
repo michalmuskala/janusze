@@ -1,0 +1,14 @@
+.page-header
+  = link_to projects_path, :class => 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_project_path(@project), :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show project
+
+%dl.dl-horizontal
+  %dt Name:
+  %dd= @project.name
+  %dt Description:
+  %dd= @project.description

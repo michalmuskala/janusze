@@ -63,8 +63,6 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-generators (3.3.1)
-      railties (>= 3.1.0)
     bootstrap-sass (3.3.1.0)
       sass (~> 3.2)
     builder (3.2.2)
@@ -108,6 +106,11 @@ GEM
       posix-spawn (~> 0.3.6)
     haml (4.0.5)
       tilt
+    haml-rails (0.5.3)
+      actionpack (>= 4.0.1)
+      activesupport (>= 4.0.1)
+      haml (>= 3.1, < 5.0)
+      railties (>= 4.0.1)
     hike (1.2.3)
     hirb (0.7.2)
     i18n (0.6.11)
@@ -219,7 +222,6 @@ DEPENDENCIES
   annotate
   better_errors
   binding_of_caller
-  bootstrap-generators
   bootstrap-sass
   cancancan
   carrierwave
@@ -227,7 +229,7 @@ DEPENDENCIES
   devise
   devise-bootstrap-views
   foreman!
-  haml
+  haml-rails
   jazz_hands!
   jbuilder (~> 2.0)
   jquery-rails

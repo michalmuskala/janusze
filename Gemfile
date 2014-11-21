@@ -12,8 +12,7 @@ gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
 gem 'pry-byebug'
 
 gem 'bootstrap-sass'
-gem 'bootstrap-generators'
-gem 'haml'
+gem 'haml-rails'
 gem 'simple_form'
 
 gem 'carrierwave'

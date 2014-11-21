@@ -18,9 +18,9 @@
         .collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li{ :class => ('active' if active_page?(:home)) }
-              %a{ :href => root_url } Home
-            %li{ :class => ('active' if active_page?(:tests)) }
-              %a{ :href => root_url } Tests
+              %a{ :href => root_path } Home
+            %li{ :class => ('active' if active_page?(:projects)) }
+              %a{ :href => projects_path } Projects
           - unless current_user
             = simple_form_for(User.new, :url => new_user_session_path, :html => { :class => 'navbar-form navbar-right' }) do |f|
               = f.input :email, :label => false, :placeholder => 'Your e-mail'
