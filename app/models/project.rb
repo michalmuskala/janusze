@@ -9,6 +9,7 @@
 #  updated_at     :datetime
 #  projected_cost :decimal(19, 2)
 #  user_id        :integer
+#  logo           :string(255)
 #
 # Indexes
 #
