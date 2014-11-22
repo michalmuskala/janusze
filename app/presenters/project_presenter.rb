@@ -1,26 +1,17 @@
-class HTMLWithPants < Redcarpet::Render::HTML
-  include Redcarpet::Render::SmartyPants
-end
-
 class ProjectPresenter < BasePresenter
   presents :project
 
   delegate :name, :to => :project
 
   def description
-    markdown_render.render(project.description).html_safe
+    self.class.markdown_render(project.description)
   end
 
   def description_blurb
     h.truncate_html(description, :length => 512)
   end
 
-  protected def markdown_render
-    @markdown_renderer ||= Redcarpet::Markdown.new(HTMLWithPants.new)
-  end
-
-  def link(text=nil)
-    text ||= project.name
+  def link(text = project.name)
     h.link_to(text, project)
   end
 
@@ -49,7 +40,8 @@ class ProjectPresenter < BasePresenter
   end
 
   def comments
-    project.root_comments.map { |comment| h.render comment }.join.html_safe
+    project.root_comments.ordered
+      .map { |comment| h.render comment }.join.html_safe
   end
 
   def show_link

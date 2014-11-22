@@ -1,6 +1,9 @@
 - present(comment) do |presented_comment|
   .media{ id: dom_id(comment) }
     .media-left
+      = presented_comment.score
+      = presented_comment.upvote_link
+      = presented_comment.downvote_link
     .media-body
       = presented_comment.body
       %small.text-muted= presented_comment.user_name

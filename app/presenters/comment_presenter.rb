@@ -2,7 +2,7 @@ class CommentPresenter < BasePresenter
   presents :comment
 
   def body
-    h.simple_format comment.body
+    self.class.markdown_render(comment.body)
   end
 
   def user_name
@@ -10,6 +10,20 @@ class CommentPresenter < BasePresenter
   end
 
   def child_comments
-    comment.children.map { |comment| h.render comment }.join.html_safe
+    comment.children.ordered.map { |comment| h.render comment }.join.html_safe
+  end
+
+  def score
+    comment.cached_votes_score
+  end
+
+  def upvote_link
+    h.link_to h.fa_icon('chevron-up'), h.upvote_comment_path(comment),
+              method: :put
+  end
+
+  def downvote_link
+    h.link_to h.fa_icon('chevron-down'), h.downvote_comment_path(comment),
+              method: :put
   end
 end

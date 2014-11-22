@@ -1,3 +1,5 @@
+require_dependency 'html_with_pants'
+
 class BasePresenter
   def initialize(object, template)
     @object = object
@@ -20,10 +22,14 @@ class BasePresenter
     def human_attribute_name(attribute)
       base_class.human_attribute_name(attribute)
     end
-  end
 
-  def h
-    @template
+    def markdown_render(text)
+      @markdown_mutex ||= Mutex.new
+      @markdown_renderer ||= Redcarpet::Markdown.new(HTMLWithPants.new)
+      @markdown_mutex.synchronize do
+        @markdown_renderer.render(text).html_safe
+      end
+    end
   end
 
   def present_attributes(*attrs, &block)
@@ -33,5 +39,11 @@ class BasePresenter
     end
     content << h.capture(&block) if block_given?
     h.content_tag(:dl, content.join.html_safe, class: 'attributes')
+  end
+
+  private
+
+  def h
+    @template
   end
 end

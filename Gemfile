@@ -22,6 +22,7 @@ gem 'cancancan'
 
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'acts_as_commentable_with_threading'
+gem 'acts_as_votable'
 
 group :development, :test do
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
@@ -42,7 +43,7 @@ gem 'traceur-rails'
 gem 'select2-rails'
 gem 'puma'
 
-gem 'font-awesome-sass', '~> 4.2.0'
+gem 'font-awesome-rails', '~> 4.2.0'
 
 gem 'bourbon'
 
