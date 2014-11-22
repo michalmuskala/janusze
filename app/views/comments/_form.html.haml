@@ -1,0 +1,6 @@
+= simple_form_for [commentable, comment],
+  html: { class: "form-horizontal", role: "form",
+          style: "display: #{local_assigns[:hidden] ? 'none' : 'block'};" } do |f|
+    = f.hidden_field :parent_id, value: local_assigns[:parent].try(:id)
+    = f.input :body
+    = f.button :submit

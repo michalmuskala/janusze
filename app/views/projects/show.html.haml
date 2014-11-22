@@ -15,3 +15,7 @@
     %dd= project.tags
     %dt Description:
     %dd= project.description
+
+  #comments
+    = project.comments
+    = render 'comments/form', comment: Comment.new, commentable: @project

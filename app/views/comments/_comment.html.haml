@@ -1,0 +1,11 @@
+- present(comment) do |presented_comment|
+  .media{ id: dom_id(comment) }
+    .media-left
+    .media-body
+      = presented_comment.body
+      %small.text-muted= presented_comment.user_name
+      = button_to 'Reply', {}, class: 'btn btn-link', form_class: 'reply-comment'
+      = render 'comments/form', comment: Comment.new, hidden: true,
+               commentable: comment.commentable, parent: comment
+
+      = presented_comment.child_comments

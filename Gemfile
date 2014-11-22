@@ -21,6 +21,7 @@ gem 'rolify'
 gem 'cancancan'
 
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'acts_as_commentable_with_threading'
 
 group :development, :test do
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'

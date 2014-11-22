@@ -11,6 +11,10 @@ class ProjectPresenter < BasePresenter
     project.tags.map(&:name).join(', ')
   end
 
+  def comments
+    project.root_comments.map { |comment| h.render comment }.join.html_safe
+  end
+
   def show_link
     h.link_to 'Show', project
   end
