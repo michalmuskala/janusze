@@ -18,3 +18,5 @@
 *.orig
 elasticsearch/
 .DS_STORE
+
+/public/uploads

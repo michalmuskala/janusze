@@ -20,6 +20,8 @@ gem 'devise'
 gem 'erb2haml'
 gem 'rolify'
 gem 'cancancan'
+gem 'cocoon'
+gem 'mini_magick'
 
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'acts_as_commentable_with_threading'

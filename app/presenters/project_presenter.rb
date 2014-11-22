@@ -48,6 +48,10 @@ class ProjectPresenter < BasePresenter
       .map { |comment| h.render comment }.join.html_safe
   end
 
+  def attachments
+    image_attachments + video_attachments
+  end
+
   def address
     project.address.blank? ? "None" : project.address
   end
@@ -62,5 +66,15 @@ class ProjectPresenter < BasePresenter
 
   def destroy_link
     h.link_to('Destroy', project, :data => { :confirm => 'Are you sure?' }, :method => :delete)
+  end
+
+  private
+
+  def video_attachments
+    project.video_attachments.map { |video| h.render video }.join.html_safe
+  end
+
+  def image_attachments
+    project.image_attachments.map { |image| h.render image }.join.html_safe
   end
 end

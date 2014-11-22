@@ -16,6 +16,9 @@ class Project < ActiveRecord::Base
   acts_as_commentable
 
   has_one :map_marker, class_name: "ProjectLocation"
+  has_many :video_attachments
+  has_many :image_attachments
+  has_many :orbitvu_attachments
 
   def address
     map_marker.try(:address) || "None"

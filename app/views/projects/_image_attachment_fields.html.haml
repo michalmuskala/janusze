@@ -1,0 +1,6 @@
+.nested-fields.row
+  .col-sm-9
+    = f.input :file, as: :file, label_html: { class: 'sr-only' }
+  .col-sm-3
+    .form-group
+      = link_to_remove_association 'Remove', f, class: 'btn btn-danger'

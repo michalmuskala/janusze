@@ -5,7 +5,8 @@ SimpleForm.setup do |config|
   # config.input_class = 'form-control'
   config.boolean_label_class = 'checkbox'
   config.wrapper_mappings = {
-    :boolean => :vertical_form_boolean
+    boolean: :vertical_form_boolean,
+    file: :vertical_file_input
   }
   # config.boolean_style = :nested
 

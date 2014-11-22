@@ -5,6 +5,12 @@ $(function (){
         $(this).hide();
     });
 
+    $("body.projects-controller.edit-action, body.projects-controller.new-action")
+      .find("#video_attachments, #orbitvu_attachments, #image_attachments")
+      .on("cocoon:before-remove", function (e, item) {
+        $(item).find("input[type=file]").attr("required", false);
+    });
+
     function sort_template(state) {
         var icon = '<i class="fa fa-angle-' + ($(state.element).data('direction') == 'asc' ? 'down' : 'up') + '">'
         return icon + state.text;

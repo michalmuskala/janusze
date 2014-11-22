@@ -25,6 +25,8 @@
     %dt Address:
     %dd= project.address
 
+  #attachments.row= project.attachments
+
   #comments
     = project.comments
     = render 'comments/form', comment: Comment.new, commentable: @project

@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
     @project.build_map_marker
+    @project.video_attachments.build
     @form = ProjectForm.new(@project)
     respond_with(@project)
   end
