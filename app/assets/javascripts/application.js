@@ -6,4 +6,11 @@
 //= require bootstrap
 //= require underscore
 //= require gmaps/google
+//= require select2
 //= require_tree .
+
+$(function() {
+    $('select:not(.dont-select2ify)').select2({
+        minimumResultsForSearch: 6
+    });
+});

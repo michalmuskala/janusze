@@ -4,6 +4,27 @@
 
 body.projects-controller {
   &.show-action {
+    .project-heading {
+      @include display(flex);
+
+      .title {
+        @include flex-grow(1);
+
+        @extend h1;
+        @extend .media-heading;
+
+        display: inline-block;
+      }
+
+      .rating {
+        @include align-self(center);
+        @include flex-shrink(0);
+
+        display: inline-block;
+        margin-left: 10px;
+      }
+    }
+
   	.map {
   	  width: 100%;
 
@@ -25,6 +46,12 @@ body.projects-controller {
     }
   }
   &.index-action {
+    .search-sort-by-type {
+      #s2id_search-sort-by-type {
+        width: 200px;
+      }
+    }
+
     .projects {
       .project {
         @extend .media;
@@ -45,6 +72,8 @@ body.projects-controller {
             @include display(flex);
 
             .title {
+              @include flex-grow(1);
+
               @extend h2;
               @extend .media-heading;
 
@@ -53,6 +82,7 @@ body.projects-controller {
 
             .rating {
               @include align-self(center);
+              @include flex-shrink(0);
 
               display: inline-block;
               margin-left: 10px;

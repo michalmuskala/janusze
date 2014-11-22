@@ -2,14 +2,19 @@
   .map
     #map-canvas
   .page-header
-    = link_to edit_project_path(@project), :class => 'btn btn-primary pull-right' do
+    -# = link_to edit_project_path(@project), :class => 'btn btn-primary pull-right' do
       %span.glyphicon.glyphicon-pencil
       Edit
-    %h1
-      = project.name
-      %small
-        by
-        = project.user_profile_link
+    .project-heading
+      .title
+        = project.name
+        %small
+          by
+          = project.user_profile_link
+      .rating
+        = stars_for_rating(project.rating)
+        = surround('(', ')') do
+          = project.rating
     .tags
       - project.tag_names.each do |tag|
         %span.label.label-primary
