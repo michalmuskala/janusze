@@ -8,6 +8,11 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  projected_cost :decimal(19, 2)
+#  user_id        :integer
+#
+# Indexes
+#
+#  index_projects_on_user_id  (user_id)
 #
 
 class Project < ActiveRecord::Base
@@ -20,6 +25,7 @@ class Project < ActiveRecord::Base
   has_many :video_attachments, autosave: true
   has_many :image_attachments, autosave: true
   has_many :orbitvu_attachments, autosave: true
+  belongs_to :user
 
   def address
     map_marker.try(:address) || "None"

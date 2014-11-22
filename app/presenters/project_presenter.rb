@@ -1,7 +1,7 @@
 class ProjectPresenter < BasePresenter
   presents :project
 
-  delegate :name, :to => :project
+  delegate :name, :user, :to => :project
 
   def description
     self.class.markdown_render(project.description)
@@ -29,10 +29,6 @@ class ProjectPresenter < BasePresenter
 
   def rating
     @rating ||= Random.rand(2.0..6.0).round(2)
-  end
-
-  protected def user
-    User.first
   end
 
   def tags

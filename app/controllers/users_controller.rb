@@ -2,8 +2,8 @@ class UsersController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
 
-    if resource && !resource.name.present?
-      resource.name = resource.email
+    if resource && resource.name.blank?
+      resource.name = resource.email.split("@").first
     end
 
     resource_saved = resource.save

@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :extract_search_options, :only => [:index]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   respond_to :html
 
@@ -31,6 +32,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new
     @project.build_map_marker
+    @project.user = current_user
     @form = ProjectForm.new(@project)
 
     if @form.validate(params[:project])
