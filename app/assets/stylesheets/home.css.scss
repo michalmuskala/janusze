@@ -3,11 +3,20 @@ body.home-controller {
     .jumbotron {
       position: relative;
       color: white;
-      text-shadow: 0px 0px 2px #666;
-      background-image: asset-url('jumbotron.jpg');
+      //text-shadow: 0px 0px 2px #666;
+      background-image: asset-url('background.jpg');
       background-position: center center;
-      padding: 150px;
+      padding: 100px;
       z-index: 1;
+      p {
+          font-weight: 400;
+          font-size: 32px;
+          text-shadow: 1px 1px 2px #5c5c5c;
+      }
+      h1 {
+          font-size: 128px;
+          text-shadow: 1px 1px 2px #5c5c5c;
+      }
     }
 
     a {

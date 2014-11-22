@@ -12,27 +12,27 @@
 
   .row
     .col-md-4
-      %h4 Videos
+      %h4 Wideo
       #video_attachments
         = f.simple_fields_for :video_attachments do |va|
           = render 'video_attachment_fields', f: va
     .col-md-4
-      %h4 Obitvu animations
+      %h4 Animacje Obitvu
       #orbitvu_attachments
         = f.simple_fields_for :orbitvu_attachments do |va|
           = render 'orbitvu_attachment_fields', f: va
 
     .col-md-4
-      %h4 Images
+      %h4 Obrazy
       #image_attachments
         = f.simple_fields_for :image_attachments do |va|
           = render 'image_attachment_fields', f: va
 
 
   = f.button :submit
-  = link_to_add_association 'Add video', f, :video_attachments,
+  = link_to_add_association 'Dodaj wideo', f, :video_attachments,
     class: 'btn btn-default', data: { association_insertion_node: '#video_attachments', association_insertion_method: :append }
-  = link_to_add_association 'Add Orbitvu animation', f, :orbitvu_attachments,
+  = link_to_add_association 'Dodaj animację Orbitvu', f, :orbitvu_attachments,
     class: 'btn btn-default', data: { association_insertion_node: '#orbitvu_attachments', association_insertion_method: :append }
-  = link_to_add_association 'Add Image', f, :image_attachments,
+  = link_to_add_association 'Dodaj obraz', f, :image_attachments,
     class: 'btn btn-default', data: { association_insertion_node: '#image_attachments', association_insertion_method: :append }

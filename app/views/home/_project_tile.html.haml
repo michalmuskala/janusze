@@ -3,9 +3,9 @@
     .thumbnail
       = image_tag(project_tile.logo)
       .caption.text-center
-        %h3= project_tile.name
+        %h2= project_tile.name
       .text-left.pull-left
-        %span.label.label-info= project_tile.map_marker.try(:city)
+        %span.label.label-info.label-big= project_tile.map_marker.try(:city)
       .text-right.pull-right
         = stars_for_rating(5)
       .clearfix

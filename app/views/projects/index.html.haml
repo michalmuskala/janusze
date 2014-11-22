@@ -1,26 +1,26 @@
 .page-header.clearfix
   = link_to new_project_path, :class => 'btn btn-primary' do
     %span.glyphicon.glyphicon-plus
-    New Project
-  .search-sort-by-type.pull-right
-    %i.fa.fa-sort-asc{ :style => 'margin-right: 10px;'}
-    %select#search-sort-by-type.dont-select2ify
-      %option{ :data => { :field => 'popularity' } }
-        Popularity
-      %option{ :data => { :field => 'rating' } }
-        Rating
-      %option{ :data => { :field => 'date' } }
-        Date
+    Nowy Projekt
+  -# .search-sort-by-type.pull-right
+  -#   %i.fa.fa-sort-asc{ :style => 'margin-right: 10px;'}
+  -#   %select#search-sort-by-type.dont-select2ify
+  -#     %option{ :data => { :field => 'popularity' } }
+  -#       Popularność
+  -#     %option{ :data => { :field => 'rating' } }
+  -#       Ocena
+  -#     %option{ :data => { :field => 'date' } }
+  -#       Data
 
 .project-search.row
   .filters.col-lg-3
     %form.form-horizontal.query{ :role => 'search' }
       - current_search_options_with_serialised_values(:unset => [:query]).each do |key, value|
         %input{ :type => 'hidden', :name => key, :value => value}
-      %input.form-control{ :type => :text, :name => 'query', :placeholder =>'Search', :value => current_search_options[:query], :style => 'margin-bottom: 20px;' }
+      %input.form-control{ :type => :text, :name => 'query', :placeholder =>'Szukaj', :value => current_search_options[:query], :style => 'margin-bottom: 20px;' }
     .filter-by-tags.panel.panel-default
       .panel-heading
-        Filter by tags
+        Filtruj po tagach
         .pull-right
           %a{ :href => search_url(:unset => [:tags]) }
             clear
@@ -44,7 +44,7 @@
                   = count
     .filter-by-region.panel.panel-default
       .panel-heading
-        Filter by region
+        Filtruj po regionie
       .panel-body
         - term_facet_to_hash(@projects.response.facets['state']).each do |facet, count|
           - state_code = ProjectLocation.state_name_to_code(facet)
@@ -63,11 +63,11 @@
                 = facet
               .facet-details
                 .facet-count
-                  = count      
-    .filter-by-projected-cost.panel.panel-default
-      .panel-heading
-        Filter by projected cost
-      .panel-body
+                  = count
+    -# .filter-by-projected-cost.panel.panel-default
+    -#   .panel-heading
+    -#     Filtruj po kosztach
+    -#   .panel-body
   .results.col-lg-9
     .projects
       - @projects.records.each_with_hit do |db_project, es_project|
@@ -81,7 +81,7 @@
               .title
                 = project.name
                 %small
-                  by
+                  organizowany przez
                   = project.user_profile_link
               .rating
                 = stars_for_rating(project.rating)
@@ -91,4 +91,4 @@
             %p
               = project.description_blurb
             %p.read-more
-              = project.link('(read more)')
+              = project.link('(przeczytaj więcej)')

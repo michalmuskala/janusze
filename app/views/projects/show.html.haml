@@ -7,13 +7,17 @@
             %h1
               = project.name
               %small.author
-                by
+                organizowany przez
                 = project.user_profile_link
           .details
             .tags
               - project.tag_names.each do |tag|
                 %a.label.label-success{ :href => projects_path(:tags => tag) }
                   = tag
+              - if current_user == @project.user
+                = link_to edit_project_path(@project), :class => 'btn btn-primary btn-sm' do
+                  %span.glyphicon.glyphicon-pencil
+                  Edytuj
             .rating
               = stars_for_rating(project.rating, :method => :put) do |id|
                 - vote_project_path(:vote => id + 1)
@@ -30,7 +34,7 @@
       .title
         = project.name
         %small
-          by
+          organizowany przez
           = project.user_profile_link
   .row
     .col-lg-9
@@ -39,11 +43,11 @@
 
       #attachments.row{ :style => 'margin-top: 30px;' }
         .col-lg-12
-          %h4 Attachments
+          %h4 Galeria
           = project.attachments
 
       #comments{ :style => 'margin-top: 35px;'}
-        %h4 Comments
+        %h4 Komentarze
         = project.comments
         = render 'comments/form', comment: Comment.new, commentable: @project
 

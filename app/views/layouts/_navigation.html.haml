@@ -12,15 +12,15 @@
         %li{ :class => ('active' if active_page?(:home)) }
           %a{ :href => root_path } Home
         %li{ :class => ('active' if active_page?(:projects)) }
-          %a{ :href => projects_path } Projects
+          %a{ :href => projects_path } Projekty
       - unless current_user
         = simple_form_for(User.new, :url => new_user_session_path, :html => { :class => 'navbar-form navbar-right' }) do |f|
           = f.input :email, :label => false, :placeholder => 'E-mail'
-          = f.input :password, :label => false, :placeholder => 'Password'
-          = f.button :submit, 'Sign In', :class => 'btn-success'
+          = f.input :password, :label => false, :placeholder => 'Hasło'
+          = f.button :submit, 'Zaloguj się', :class => 'btn-success'
           %a.btn.btn-primary{ :href => new_user_registration_path }
-            Sign Up
+            Zarejestruj się
       - if current_user
         = button_to destroy_user_session_path, :method => :delete, :form_class => 'navbar-form navbar-right', :class => 'btn btn-danger' do
           %i.fa.fa-power-off
-          Logout
+          Wyloguj się
