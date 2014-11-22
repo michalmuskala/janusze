@@ -49,7 +49,7 @@ class ProjectPresenter < BasePresenter
   end
 
   def attachments
-    image_attachments + video_attachments
+    orbitvu_attachments + image_attachments + video_attachments
   end
 
   def address
@@ -72,6 +72,11 @@ class ProjectPresenter < BasePresenter
 
   def video_attachments
     project.video_attachments.map { |video| h.render video }.join.html_safe
+  end
+
+  def orbitvu_attachments
+    project.orbitvu_attachments.map { |animation| h.render animation }
+      .join.html_safe
   end
 
   def image_attachments
