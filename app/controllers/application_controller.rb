@@ -17,4 +17,29 @@ class ApplicationController < ActionController::Base
     @page == page
   end
   helper_method :active_page?
+
+  public def controller_name(*args)
+    format = args[0]
+    name = @overriden_controller_name || super()
+    case format
+      when :css, 'css'
+        "#{name.dasherize}-controller"
+      else
+        name
+    end
+  end
+
+  public def action_name(*args)
+    format = args[0]
+    case format
+      when :css, 'css'
+        "#{super().dasherize}-action"
+      else
+        super()
+    end
+  end
+
+  def override_controller_name(name)
+    @overriden_controller_name = name
+  end
 end

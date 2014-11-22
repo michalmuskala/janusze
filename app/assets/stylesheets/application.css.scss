@@ -1,6 +1,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+@import "bourbon";
+
+@import "projects";
+
 //= require select2
 //= require select2-bootstrap
 //= require devise_bootstrap_views
@@ -30,7 +37,7 @@ body {
 /* Not required for template or sticky footer method. */
 
 body > .container {
-  padding: 60px 15px 0;
+  padding: 60px 15px 60px 15px;
 }
 .container .text-muted {
   margin: 20px 0;

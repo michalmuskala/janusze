@@ -1,26 +1,47 @@
-.page-header
-  = link_to new_project_path, :class => 'btn btn-primary' do
+.page-header.clearfix
+  = link_to new_project_path, :class => 'btn btn-primary pull-right' do
     %span.glyphicon.glyphicon-plus
     New Project
-  %h1 Listing projects
 
-.table-responsive
-  %table.table.table-striped.table-bordered.table-hover
-    %thead
-      %tr
-        %th Name
-        %th Tags
-        %th Description
-        %th
-        %th
-        %th
+.projects
+  - present(@projects).each do |project|
+    .project
+      .project-image
+        %img{ :src => 'http://placehold.it/160x160' }
+      .project-details
+        .project-heading
+          .title
+            = project.name
+            %small
+              by
+              = project.user_profile_link
+          .rating
+            = stars_for_rating(project.rating)
+            = surround('(', ')') do
+              = project.rating
+        %p
+          = project.description_blurb
+        %p.read-more
+          = project.link('(read more)')
 
-    %tbody
-      - present(@projects).each do |project|
+-# 
+  .table-responsive
+    %table.table.table-striped.table-bordered.table-hover
+      %thead
         %tr
-          %td= project.name
-          %td= project.tags
-          %td= project.description
-          %td= project.show_link
-          %td= project.edit_link
-          %td= project.destroy_link
+          %th Name
+          %th Tags
+          %th Description
+          %th
+          %th
+          %th
+
+      %tbody
+        - present(@projects).each do |project|
+          %tr
+            %td= project.name
+            %td= project.tags
+            %td= project.description
+            %td= project.show_link
+            %td= project.edit_link
+            %td= project.destroy_link

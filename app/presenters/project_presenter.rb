@@ -1,14 +1,51 @@
+class HTMLWithPants < Redcarpet::Render::HTML
+  include Redcarpet::Render::SmartyPants
+end
+
 class ProjectPresenter < BasePresenter
   presents :project
 
-  delegate :name, to: :project
+  delegate :name, :to => :project
 
   def description
-    h.simple_format project.description
+    markdown_render.render(project.description).html_safe
+  end
+
+  def description_blurb
+    h.truncate_html(description, :length => 512)
+  end
+
+  protected def markdown_render
+    @markdown_renderer ||= Redcarpet::Markdown.new(HTMLWithPants.new)
+  end
+
+  def link(text=nil)
+    text ||= project.name
+    h.link_to(text, project)
+  end
+
+  def user_name
+    user.name
+  end
+
+  def user_profile_link
+    h.link_to(user_name, user)
+  end
+
+  def rating
+    @rating ||= Random.rand(2.0..6.0).round(2)
+  end
+
+  protected def user
+    User.first
   end
 
   def tags
-    project.tags.map(&:name).join(', ')
+    project.tags
+  end
+
+  def tag_names
+    tags.map(&:name)
   end
 
   def comments
@@ -16,15 +53,14 @@ class ProjectPresenter < BasePresenter
   end
 
   def show_link
-    h.link_to 'Show', project
+    h.link_to('Show', project)
   end
 
   def edit_link
-    h.link_to 'Edit', h.edit_project_path(project)
+    h.link_to('Edit', h.edit_project_path(project))
   end
 
   def destroy_link
-    h.link_to 'Destroy', project,
-              data: { confirm: 'Are you sure?' }, method: :delete
+    h.link_to('Destroy', project, :data => { :confirm => 'Are you sure?' }, :method => :delete)
   end
 end

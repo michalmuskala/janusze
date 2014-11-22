@@ -1,20 +1,20 @@
 - present(@project) do |project|
   .page-header
-    = link_to projects_path, :class => 'btn btn-default' do
-      %span.glyphicon.glyphicon-list-alt
-      Back
-    = link_to edit_project_path(@project), :class => 'btn btn-primary' do
+    = link_to edit_project_path(@project), :class => 'btn btn-primary pull-right' do
       %span.glyphicon.glyphicon-pencil
       Edit
-    %h1 Show project
+    %h1
+      = project.name
+      %small
+        by
+        = project.user_profile_link
+    .tags
+      - project.tag_names.each do |tag|
+        %span.label.label-primary
+          = tag
 
-  %dl.dl-horizontal
-    %dt Name:
-    %dd= project.name
-    %dt Tags:
-    %dd= project.tags
-    %dt Description:
-    %dd= project.description
+  %dt Description:
+  %dd= project.description
 
   #comments
     = project.comments

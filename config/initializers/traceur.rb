@@ -1,0 +1,1 @@
+Traceur::Config.compile_to = :amd

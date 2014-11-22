@@ -1,3 +1,59 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body.projects-controller {
+  &.show-action {
+    .tags {
+      margin-left: 10px;
+
+      .label {
+        margin-right: 10px;
+      }
+    }
+  }
+  &.index-action {
+    .projects {
+      .project {
+        @extend .media;
+        
+        .project-image {
+          @extend .media-left;
+
+          // img {
+          //   height: 100%;
+          //   width:  auto;
+          // }
+        }
+
+        .project-details {
+          @extend .media-body;
+
+          .project-heading {
+            @include display(flex);
+
+            .title {
+              @extend h2;
+              @extend .media-heading;
+
+              display: inline-block;
+            }
+
+            .rating {
+              @include align-self(center);
+
+              display: inline-block;
+              margin-left: 10px;
+            }
+          }
+
+          .read-more {
+            @extend .pull-right;
+
+            margin-right: 30px;
+          }
+        }
+      }
+    }
+  }
+}

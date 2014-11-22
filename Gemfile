@@ -41,3 +41,17 @@ end
 gem 'traceur-rails'
 gem 'select2-rails'
 gem 'puma'
+
+gem 'font-awesome-sass', '~> 4.2.0'
+
+gem 'bourbon'
+
+gem 'redcarpet'
+
+gem 'elasticsearch', :github => 'elasticsearch/elasticsearch-ruby'
+gem 'elasticsearch-rails', :github => 'elasticsearch/elasticsearch-rails'
+gem 'elasticsearch-model', :github => 'elasticsearch/elasticsearch-rails'
+
+gem 'nokogiri'
+
+gem 'truncate_html'
