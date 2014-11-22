@@ -14,10 +14,6 @@
               - project.tag_names.each do |tag|
                 %a.label.label-success{ :href => projects_path(:tags => tag) }
                   = tag
-              - if current_user == @project.user
-                = link_to edit_project_path(@project), :class => 'btn btn-primary btn-sm' do
-                  %span.glyphicon.glyphicon-pencil
-                  Edytuj
             .rating
               = stars_for_rating(project.rating, :method => :put) do |id|
                 - vote_project_path(:vote => id + 1)
@@ -25,17 +21,6 @@
                 = surround('(', ')') do
                   = project.rating
 
-
-  -# .page-header
-    -# = link_to edit_project_path(@project), :class => 'btn btn-primary pull-right' do
-      %span.glyphicon.glyphicon-pencil
-      Edit
-    .project-heading
-      .title
-        = project.name
-        %small
-          organizowany przez
-          = project.user_profile_link
   .row
     .col-lg-9
       #description
@@ -52,6 +37,10 @@
         = render 'comments/form', comment: Comment.new, commentable: @project
 
     .col-lg-3
+      - if current_user == @project.user
+        = link_to edit_project_path(@project), :class => 'btn btn-primary btn-block', :style => 'margin-bottom: 15px;' do
+          %span.glyphicon.glyphicon-pencil
+          Edytuj
       .location
         = fa_icon('globe', text: project.address)
       .map{ :style => 'margin-top: 15px;'}

@@ -2,10 +2,14 @@
   = link_to project_tile do
     .thumbnail
       = image_tag(project_tile.logo)
-      .caption.text-center
-        %h2= project_tile.name
-      .text-left.pull-left
-        %span.label.label-info.label-big= project_tile.map_marker.try(:city)
-      .text-right.pull-right
-        = stars_for_rating(5)
-      .clearfix
+      .details{ :style => 'padding: 10px;' }
+        .caption.text-center
+          %h2= project_tile.name
+        .text-left.pull-left
+          %span.label.label-info.label-big= project_tile.map_marker.try(:city)
+        .rating.text-right.pull-right{ :style => 'font-size: 16px;'}
+          = stars_for_rating(present(project_tile).rating)
+          .number
+            = surround('(', ')') do
+              = present(project_tile).rating
+        .clearfix
