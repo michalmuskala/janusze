@@ -22,4 +22,39 @@ $(function (){
         // formatSelection: sort_template,
         // escapeMarkup: function(m) { return m; }
     });
+
+    $('body.projects-controller form #project_tag_list').select2({
+        tags: true,
+        initSelection: function(element, callback) {
+            var data = [];
+            _.each($tags.val().split(","), function(tag) {
+                data.push({ id: tag, text: tag });
+            });
+
+            callback(data);
+        },
+        createSearchChoice: function(term) {
+          return {
+            id: term,
+            text: term,
+            count: 0
+          }
+        },
+        tokenSeparators: [","],
+        minimumInputLength: 1,
+        ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+            url: '/projects/tags',
+            dataType: 'json',
+            data: function (term, page) {
+                return {
+                    term: term
+                };
+            },
+            results: function (data, page) {
+                return {
+                    results: data.tags
+                };
+            }
+        }
+    });
 });

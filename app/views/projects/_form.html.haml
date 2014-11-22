@@ -1,10 +1,10 @@
 = simple_form_for @form, :html => { :class => "form-horizontal", :role => "form" } do |f|
   = f.input :name
   = f.input :tag_list
-  = f.input :description, as: :text
+  = f.input :description, :as => :text
 
   = f.simple_fields_for :map_marker do |mm|
-    = mm.input :state
+    = mm.input :state, :as => :select, :collection => ProjectLocation::STATE_NAME_TO_CODE.each.to_a
     = mm.input :city
     = mm.input :street
     = mm.input :street_number

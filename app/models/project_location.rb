@@ -19,6 +19,10 @@
 #
 
 class ProjectLocation < ActiveRecord::Base
+  STATES = Carmen::Country.coded('PL').subregions
+  STATE_NAME_TO_CODE = Hash[STATES.map { |state| [state.name, state.code.downcase] }]
+  CODE_TO_STATE = Hash[STATES.map { |state| [state.code.downcase, state] }]
+
   belongs_to :project
 
   geocoded_by :address
@@ -30,5 +34,13 @@ class ProjectLocation < ActiveRecord::Base
 
   def coords
     {lat: latitude, lng: longitude}
+  end
+
+  def self.state_name_to_code(state_name)
+    STATE_TO_CODE[state_name.mb_chars.downcase.normalize.to_s]
+  end
+
+  def self.code_to_state(state_code)
+    CODE_TO_STATE[state_code.downcase]
   end
 end

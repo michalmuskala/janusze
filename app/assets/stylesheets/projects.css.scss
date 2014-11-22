@@ -45,10 +45,60 @@ body.projects-controller {
       }
     }
   }
+
   &.index-action {
     .search-sort-by-type {
       #s2id_search-sort-by-type {
         width: 200px;
+      }
+    }
+
+    .project-search {
+      .filters {
+        .filter-by-tags {
+
+        }
+
+        .facet {
+          @include display(flex);
+
+          .facet-term {
+            @include flex-grow(1);
+          }
+
+          .facet-details {
+            @include flex-shrink(0);
+
+            .facet-count {
+              // @include align-self()
+              @extend .label;
+              @extend .label-default;
+
+              margin-right: 20px;
+            }
+
+            .facet-remove {
+              font-size: 14px;
+              width: 16px;
+              height: 16px;
+              display: inline-block;
+              line-height: 16px;
+              text-align: center;
+            }
+          }
+
+          &.active {
+            .facet-term {
+              font-weight: bold;
+            }
+
+            .facet-details {
+              .facet-count {
+                @extend .label-primary;
+              }
+            }
+          }
+        }
       }
     }
 

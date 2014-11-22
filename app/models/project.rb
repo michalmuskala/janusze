@@ -2,11 +2,12 @@
 #
 # Table name: projects
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  description :text
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id             :integer          not null, primary key
+#  name           :string(255)
+#  description    :text
+#  created_at     :datetime
+#  updated_at     :datetime
+#  projected_cost :decimal(19, 2)
 #
 
 class Project < ActiveRecord::Base
@@ -27,7 +28,9 @@ class Project < ActiveRecord::Base
   mapping do
     indexes :id,                :type => :integer, :index => 'not_analyzed'
     indexes :name,              :type => :string
-    indexes :tags,              :type => :string
+    indexes :tags,              :type => :nested do
+      indexes :name, :type => :string
+    end
     indexes :description_blurb, :type => :string
     indexes :rating,            :type => :float
     indexes :created_at,        :type => :date
@@ -40,7 +43,7 @@ class Project < ActiveRecord::Base
     {
       :id                => self.id,
       :name              => self.name,
-      :tags              => presenter.tag_names,
+      :tags              => self.tags.map { |tag| { :name => tag.name } },
       :description_blurb => presenter.description_first_paragraph,
       :rating            => presenter.rating,
       :created_at        => self.created_at,

@@ -70,3 +70,11 @@ gem 'jquery-cdn'
 gem 'kaminari'
 
 gem 'naught'
+
+gem 'money'
+gem 'money-rails'
+gem 'monetize'
+
+gem 'carmen-rails'
+
+gem 'virtus'

@@ -14,12 +14,34 @@
 
 .project-search.row
   .filters.col-lg-3
-    .query
-      %input.form-control{ :type => :text, :placeholder =>'Query', :style => 'margin-bottom: 20px;' }
+    %form.form-horizontal.query{ :role => 'search' }
+      - current_search_options_with_serialised_values(:unset => [:query]).each do |key, value|
+        %input{ :type => 'hidden', :name => key, :value => value}
+      %input.form-control{ :type => :text, :name => 'query', :placeholder =>'Search', :value => current_search_options[:query], :style => 'margin-bottom: 20px;' }
     .filter-by-tags.panel.panel-default
       .panel-heading
         Filter by tags
+        .pull-right
+          %a{ :href => search_url(:unset => [:tags]) }
+            clear
       .panel-body
+        - term_facet_to_hash(@projects.response.facets['tags']).each do |facet, count|
+          - if current_search_options[:tags].include?(facet)
+            .facet.active
+              .facet-term
+                = facet
+              .facet-details
+                .facet-count
+                  = count
+                %a.facet-remove{ :href => search_url(:without => { :tags => [facet] }) }
+                  x
+          - else
+            %a.facet{ :href => search_url(:with => { :tags => [facet] }) }
+              .facet-term
+                = facet
+              .facet-details
+                .facet-count
+                  = count
     .filter-by-region.panel.panel-default
       .panel-heading
         Filter by region
@@ -30,7 +52,7 @@
       .panel-body
   .results.col-lg-9
     .projects
-      - @projects.records.each_with_hit do  |db_project, es_project|
+      - @projects.records.each_with_hit do |db_project, es_project|
         - project = present(db_project)
         .project
           .project-image

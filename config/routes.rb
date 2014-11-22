@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
+  get 'projects/tags' => 'projects#tags'
+
   resources :projects do
     resources :comments, only: [:create], shallow: true do
       put :upvote, on: :member

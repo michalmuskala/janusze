@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :extract_search_options, :only => [:index]
 
   respond_to :html
 
@@ -52,6 +53,24 @@ class ProjectsController < ApplicationController
     respond_with(@project)
   end
 
+  def tags
+    for_what = :projects # params[:for]
+    term = params[:term].chomp(',')
+
+    tags = ::Tags.all_tags_for(for_what, :starting_with => term)
+    # unless tags.map{|t| t[:text]}.include? term then
+    #   tags = [{ 
+    #     :text => term,
+    #     :id => term,
+    #     :count => 0
+    #   }].concat(tags)
+    # end
+
+    render :json => {
+      :tags => tags
+    }
+  end
+
   private
     def set_project
       @project = Project.find(params[:id])
@@ -59,9 +78,8 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params
-        .require(:project)
-        .permit(:name, :description, :tag_list, map_marker: [:state, :city, :street, :street_number])
+      params.require(:project)
+            .permit(:name, :description, :tag_list, map_marker: [:state, :city, :street, :street_number])
     end
 
     NullSearchOption = Naught.build do |config|
@@ -73,7 +91,7 @@ class ProjectsController < ApplicationController
     end
 
     def index_search_query
-      {}.merge(generate_query) #.merge(generate_filters).merge(generate_facets).merge(generate_highlights)
+      {}.merge(generate_query).merge(generate_filters).merge(generate_facets).merge(generate_highlights)
     end
 
     class SearchOptionHash < Hash
@@ -89,15 +107,78 @@ class ProjectsController < ApplicationController
 
     def extract_search_options
       current_search_options[:query] = params[:query] if params[:query]
+      current_search_options[:tags]  = params[:tags].split(',').map(&:downcase).uniq if params[:tags]
     end
 
     def generate_query
       @query ||= begin
         if (query = current_search_options[:query]).present?
-          { :query => { :fuzzy => { :summary => query } } }
+          { 
+            :query => {
+              :bool => {
+                :should => [
+                  :fuzzy => {
+                    :name => query
+                  },
+                  :fuzzy => {
+                    :description_blurb => query
+                  }
+                ]
+              }
+            }
+          }
         else
           { :query => { :match_all => {} } }
         end
+      end
+    end
+
+    def generate_filters
+      @filters ||= begin
+        filters = [tag_filter]
+
+        {
+          :filter => filters.filter(&:present?).fold({}) do |acc, filter|
+                       filter.each do |type, value|
+                         acc[type] = (acc[type] || []).concat(Array.wrap(value))
+                       end
+                       acc
+                     end
+        }
+      end
+    end
+
+    def generate_facets
+      @facets ||= {
+        :facets => {
+          :tags => {
+            :terms => {
+              :field => 'tags.name'
+            },
+            :nested => 'tags'
+          }
+        }
+      }
+    end
+
+    def generate_highlights
+      {}
+    end
+
+    def tag_filter
+      if (tags = current_search_options[:tags]).present?
+        {
+          :and => [
+            {
+              :nested => {
+                :path => 'tags',
+                :filter => {
+                  :terms => { :'tags.name' => tags }
+                }
+              }
+            }
+          ]
+        }
       end
     end
 end
