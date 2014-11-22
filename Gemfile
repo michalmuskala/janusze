@@ -23,6 +23,8 @@ gem 'erb2haml'
 gem 'rolify'
 gem 'cancancan'
 
+gem 'acts-as-taggable-on', '~> 3.4'
+
 group :development, :test do
   gem 'spring'
   gem 'better_errors'

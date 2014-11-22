@@ -9,16 +9,18 @@
     %thead
       %tr
         %th Name
+        %th Tags
         %th Description
         %th
         %th
         %th
 
     %tbody
-      - @projects.each do |project|
+      - present(@projects).each do |project|
         %tr
           %td= project.name
+          %td= project.tags
           %td= project.description
-          %td= link_to 'Show', project
-          %td= link_to 'Edit', edit_project_path(project)
-          %td= link_to 'Destroy', project, :data => { confirm: 'Are you sure?' }, :method => :delete
+          %td= project.show_link
+          %td= project.edit_link
+          %td= project.destroy_link
