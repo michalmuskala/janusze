@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   active_page :projects
 
   def index
+    binding.pry
     @projects = Project.search(index_search_query)
     respond_with(@projects)
   end
@@ -58,11 +59,11 @@ class ProjectsController < ApplicationController
       @project.map_marker || @project.build_map_marker
     end
 
-  def project_params
-    params
-      .require(:project)
-      .permit(:name, :description, :tag_list, map_marker: [:state, :city, :street, :street_number])
-  end
+    def project_params
+      params
+        .require(:project)
+        .permit(:name, :description, :tag_list, map_marker: [:state, :city, :street, :street_number])
+    end
 
     NullSearchOption = Naught.build do |config|
       config.black_hole

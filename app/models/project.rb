@@ -24,7 +24,7 @@ class Project < ActiveRecord::Base
   mapping do
     indexes :id,                :type => :integer, :index => 'not_analyzed'
     indexes :name,              :type => :string
-    indexes :tags,              :type => :array
+    indexes :tags,              :type => :string
     indexes :description_blurb, :type => :string
     indexes :rating,            :type => :float
     indexes :created_at,        :type => :date
