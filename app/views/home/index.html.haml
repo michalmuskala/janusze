@@ -1,7 +1,5 @@
 .row
   = render partial: "project_tile", collection: @projects
-
 .row
-  %h3.text-center= link_to "Show me more...", projects_path
   %h5.text-center or
-  %h3.text-center= link_to "Add your own project", new_project_path, class: "btn btn-success btn-lg"
+  %h3.text-center= link_to "Show me more...", projects_path

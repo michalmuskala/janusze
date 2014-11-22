@@ -7,18 +7,18 @@
     = csrf_meta_tags
   %body{ :class => [controller_name(:css), action_name(:css)] }
     = render 'layouts/navigation'
-    I AM IRON MAN!
     .jumbotron
+      .subtle-overlay
       .container
         .text-center
           %h1 Hello, Janusze!
-          %p 
-            To dla was zmieniamy Sląsk 
-            %u na lepsze!
-          %p 
-            Cause we like trains!!!
           %p
-            = link_to "Learn More", projects_path, class: "btn btn-default btn-large"
+            To dla was zmieniamy Sląsk
+            %u na lepsze!
+          %p
+            Cause we like trains!!!
+          %p.top-space
+            = link_to "Add your own project", new_project_path, class: "btn btn-success btn-lg"
 
     .container
       - flash.each do |key, value|
