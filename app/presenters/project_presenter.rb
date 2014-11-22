@@ -68,6 +68,10 @@ class ProjectPresenter < BasePresenter
     project.logo.url
   end
 
+  def logo_image_project_list_url
+    project.logo.project_list.url
+  end
+
   private
     def video_attachments
       project.video_attachments.map { |video| h.render video }.join.html_safe

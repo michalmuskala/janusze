@@ -66,43 +66,7 @@ body.projects-controller {
             // bottom: -4px;
 
             .stars {
-              font-size: 22pt;
-
-              a.star {
-                @extend .fa;
-
-                &:hover, &:active, &:focus {
-                  text-decoration: none;
-                }
-              }
-
-                a.star.whole {
-                  @extend .fa-star;
-                  color: $brand-warning;
-                }
-
-                a.star.half {
-                  @extend .fa-star-half-full;
-                  color: $brand-warning;
-                }
-
-                a.star.empty { 
-                  @extend .fa-star-o;
-
-                  color: $gray-light;
-                }
-
-              a.star.force-full {
-                @extend .fa-star;
-
-                color: $brand-warning;
-              }
-
-              a.star.force-empty {
-                // @extend .fa-star-o;
-
-                color: $gray-light;
-              }
+              font-size: 15pt;
             }
 
             .number {
@@ -260,7 +224,7 @@ body.projects-controller {
               @include align-self(center);
               @include flex-shrink(0);
 
-              display: inline-block;
+              // display: inline-block;
               margin-left: 10px;
             }
           }

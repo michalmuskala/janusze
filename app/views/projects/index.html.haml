@@ -75,7 +75,7 @@
         .project
           .project-image
             = link_to db_project do
-              %img{ :src => 'http://placehold.it/160x160' }
+              %img{ :src => project.logo_image_project_list_url }
           .project-details
             .project-heading
               .title
@@ -85,8 +85,9 @@
                   = project.user_profile_link
               .rating
                 = stars_for_rating(project.rating)
-                = surround('(', ')') do
-                  = project.rating
+                .number
+                  = surround('(', ')') do
+                    = project.rating
             %p
               = project.description_blurb
             %p.read-more

@@ -79,3 +79,62 @@ form {
 .nested-fields .form-group {
     margin-right: 0;
 }
+
+
+.rating {
+  @include align-self(center);
+  @include flex-shrink(0);
+  @include display(flex);
+  // position: absolute;
+  // right: 0px;
+  // bottom: -4px;
+
+  .stars {
+    // font-size: 22pt;
+
+    a.star, i.star {
+      @extend .fa;
+
+      &:hover, &:active, &:focus {
+        text-decoration: none;
+      }
+    }
+
+    a.star.whole, i.star.whole {
+      @extend .fa-star;
+      color: $brand-warning;
+    }
+
+    a.star.half, i.star.half {
+      @extend .fa-star-half-full;
+      color: $brand-warning;
+    }
+
+    a.star.empty, i.star.empty { 
+      @extend .fa-star-o;
+
+      color: $gray-light;
+    }
+
+    a.star.force-full, i.star.force-full {
+      @extend .fa-star;
+
+      color: $brand-warning;
+    }
+
+    a.star.force-empty, i.star.force-empty {
+      // @extend .fa-star-o;
+
+      color: $gray-light;
+    }
+  }
+
+  .number {
+    @include flex-shrink(0);
+    @include align-items(flex-end);
+    @include display(flex);
+
+    margin-left: 10px;
+    padding-bottom: 4px;
+  }
+}

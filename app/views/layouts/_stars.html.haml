@@ -1,12 +1,21 @@
 - id = 0
 .stars
   - wholes.times do
-    = link_to_if url_block, '<i></i>'.html_safe, url_block.try(:call, id), :class => 'star whole', **url_kwargs
+    - if url_block
+      = link_to '<i></i>'.html_safe, url_block.call(id), :class => 'star whole', **url_kwargs
+    - else
+      %i.star.whole
     - id += 1
   - if halfs > 0
     - halfs.times do
-      = link_to_if url_block, '<i></i>'.html_safe, url_block.try(:call, id), :class => 'star half', **url_kwargs
+      - if url_block
+        = link_to '<i></i>'.html_safe, url_block.call(id), :class => 'star half', **url_kwargs
+      - else
+        %i.star.half
       - id += 1
   - empties.times do
-    = link_to_if url_block, '<i></i>'.html_safe, url_block.try(:call, id), :class => 'star empty', **url_kwargs
+    - if url_block
+      = link_to '<i></i>'.html_safe, url_block.call(id), :class => 'star empty', **url_kwargs
+    - else
+      %i.star.empty
     - id += 1
