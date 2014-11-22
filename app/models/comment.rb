@@ -55,7 +55,7 @@ class Comment < ActiveRecord::Base
   end
 
   def self.ordered
-    order(cached_votes_score: :desc)
+    reorder(cached_votes_score: :desc)
   end
 
   def has_children?
