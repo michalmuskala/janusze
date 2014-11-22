@@ -46,7 +46,7 @@ w Szkole Podstawowej nr 1 w Mysłowicach. Każdy nawet najmniejszy drobiazg się
 EOP
 p.tag_list = %w(pomoc charytatywne inicjatywa dzieci mysłowice)
 p.orbitvu_attachments << OrbitvuAttachment.new(url: "http://orbitvu.co/001/h6fnEGASK9NQLsp37ewCDi/")
-p.logo = Rack::Test::UploadedFile.new('fixtures/pictures/.jpg')
+p.logo = Rack::Test::UploadedFile.new('fixtures/pictures/santa.jpg')
 p.map_marker = ProjectLocation.new(state: "Śląskie", city: "Mysłowice", street: "Wesoła", street_number: 21)
 p.user = User.find_by(email: "gosia@janusz.pl")
 p.save!

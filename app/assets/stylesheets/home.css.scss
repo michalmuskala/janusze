@@ -14,6 +14,11 @@ body.home-controller {
       text-decoration: none;
     }
 
+    .thumbnail > img {
+      width: 600px;
+      height: 350px;
+    }
+
     .subtle-overlay {
       z-index: -1;
       position: absolute;
