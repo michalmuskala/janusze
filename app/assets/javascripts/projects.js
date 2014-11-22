@@ -59,4 +59,19 @@ $(function (){
             }
         }
     });
+
+    var $stars = $('body.projects-controller.show-action .title-overlay .rating .stars');
+
+    $stars.on('mouseleave', function(e) {
+        $stars.find('.star').removeClass('force-empty force-full');
+    })
+
+    $stars.on('mouseover', 'a.star', function() {
+        var $star = $(this);
+
+        $stars.find('.star').removeClass('force-empty force-full');
+        $star.addClass('force-full');
+        $star.prevAll().addClass('force-full');
+        $star.nextAll().addClass('force-empty');
+    });
 });

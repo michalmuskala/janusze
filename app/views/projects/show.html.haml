@@ -15,7 +15,8 @@
                 %a.label.label-success{ :href => projects_path(:tags => tag) }
                   = tag
             .rating
-              = stars_for_rating(project.rating, '#')
+              = stars_for_rating(project.rating, :method => :put) do |id|
+                - vote_project_path(:vote => id + 1)
               .number
                 = surround('(', ')') do
                   = project.rating

@@ -68,13 +68,39 @@ body.projects-controller {
             .stars {
               font-size: 22pt;
 
-              .wholes, .halfs {
-                display: inline-block;
+              a.star {
+                @extend .fa;
+
+                &:hover, &:active, &:focus {
+                  text-decoration: none;
+                }
+              }
+
+                a.star.whole {
+                  @extend .fa-star;
+                  color: $brand-warning;
+                }
+
+                a.star.half {
+                  @extend .fa-star-half-full;
+                  color: $brand-warning;
+                }
+
+                a.star.empty { 
+                  @extend .fa-star-o;
+
+                  color: $gray-light;
+                }
+
+              a.star.force-full {
+                @extend .fa-star;
+
                 color: $brand-warning;
               }
 
-              .empties {
-                display: inline-block;
+              a.star.force-empty {
+                // @extend .fa-star-o;
+
                 color: $gray-light;
               }
             }
