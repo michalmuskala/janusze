@@ -230,7 +230,7 @@ GEM
     grit (2.5.0)
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
-      posix-spawn (~> 0.3.6)
+      posix-spawn (~> 0a.3.6)
     haml (4.1.0.beta.1)
       tilt
     haml-rails (0.5.3)
