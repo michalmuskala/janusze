@@ -4,5 +4,8 @@
       %img{src: "http://placekitten.com/g/600/350", alt: "Super project"}
       .caption.text-center
         %h3= project_tile.name
+      .text-left.pull-left
         %span.label.label-info= project_tile.map_marker.try(:city)
-      .text-right
+      .text-right.pull-right
+        = stars_for_rating(5)
+      .clearfix
