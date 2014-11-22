@@ -261,11 +261,8 @@ DEPENDENCIES
   puma
   quiet_assets
   rails (= 4.1.8)
-<<<<<<< HEAD
-  rolify
-=======
   rails_12factor
->>>>>>> 9197dde... Add Herokulike Procfile
+  rolify
   sass-rails (~> 4.0.3)
   select2-rails
   simple_form!
