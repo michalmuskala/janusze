@@ -23,7 +23,9 @@ $(function (){
         // escapeMarkup: function(m) { return m; }
     });
 
-    $('body.projects-controller form #project_tag_list').select2({
+    var $tags = $('body.projects-controller form #project_tag_list');
+
+    $tags.select2({
         tags: true,
         initSelection: function(element, callback) {
             var data = [];

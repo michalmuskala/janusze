@@ -40,7 +40,7 @@ class Project < ActiveRecord::Base
       indexes :state,         :type => :string
       indexes :city,          :type => :string
       indexes :street,        :type => :string
-      indexes :street_number, :type => :integer
+      indexes :street_number, :type => :string
     end
 
     indexes :created_at,        :type => :date

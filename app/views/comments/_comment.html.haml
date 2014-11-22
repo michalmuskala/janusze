@@ -1,5 +1,5 @@
 - present(comment) do |presented_comment|
-  .media{ id: dom_id(comment) }
+  .media{ id: dom_id(comment), :style => 'margin-top: 15px;' }
     .media-left
       = presented_comment.score
       = presented_comment.upvote_link
