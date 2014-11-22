@@ -68,6 +68,8 @@ body.projects-controller {
         .project-details {
           @extend .media-body;
 
+          width: 100%;
+
           .project-heading {
             @include display(flex);
 

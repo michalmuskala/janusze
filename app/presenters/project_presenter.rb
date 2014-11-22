@@ -11,6 +11,10 @@ class ProjectPresenter < BasePresenter
     h.truncate_html(description, :length => 512)
   end
 
+  def description_first_paragraph
+    Nokogiri::HTML.parse(description).css('p').first.to_s.html_safe
+  end
+
   def link(text = project.name)
     h.link_to(text, project)
   end

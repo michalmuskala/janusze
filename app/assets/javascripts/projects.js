@@ -11,9 +11,9 @@ $(function (){
     }
 
     $('body.projects-controller.index-action select#search-sort-by-type').select2({
-        minimumResultsForSearch: 7,
-        formatResult: sort_template,
-        formatSelection: sort_template,
-        escapeMarkup: function(m) { return m; }
+        minimumResultsForSearch: 7
+        // formatResult: sort_template,
+        // formatSelection: sort_template,
+        // escapeMarkup: function(m) { return m; }
     });
 });

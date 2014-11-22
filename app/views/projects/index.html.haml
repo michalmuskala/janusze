@@ -3,22 +3,19 @@
     %span.glyphicon.glyphicon-plus
     New Project
   .search-sort-by-type.pull-right
+    %i.fa.fa-sort-asc{ :style => 'margin-right: 10px;'}
     %select#search-sort-by-type.dont-select2ify
-      %option{ :data => { :field => 'popularity', :direction => 'asc' } }
+      %option{ :data => { :field => 'popularity' } }
         Popularity
-      %option{ :data => { :field => 'popularity', :direction => 'desc' } }
-        Popularity
-      %option{ :data => { :field => 'rating', :direction => 'asc' } }
+      %option{ :data => { :field => 'rating' } }
         Rating
-      %option{ :data => { :field => 'rating', :direction => 'desc' } }
-        Rating
-      %option{ :data => { :field => 'date', :direction => 'asc' } }
-        Date
-      %option{ :data => { :field => 'date', :direction => 'desc' } }
+      %option{ :data => { :field => 'date' } }
         Date
 
 .project-search.row
   .filters.col-lg-3
+    .query
+      %input.form-control{ :type => :text, :placeholder =>'Query', :style => 'margin-bottom: 20px;' }
     .filter-by-tags.panel.panel-default
       .panel-heading
         Filter by tags
@@ -33,7 +30,8 @@
       .panel-body
   .results.col-lg-9
     .projects
-      - present(@projects).each do |project|
+      - @projects.records.each_with_hit do  |db_project, es_project|
+        - project = present(db_project)
         .project
           .project-image
             %img{ :src => 'http://placehold.it/160x160' }

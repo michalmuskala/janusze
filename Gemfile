@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.1.5"
+ruby '2.1.5'
 
 gem 'rails', '4.1.8'
 gem 'pg'
@@ -64,3 +64,7 @@ gem 'nokogiri'
 gem 'truncate_html'
 gem 'requirejs-rails'
 gem 'jquery-cdn'
+
+gem 'kaminari'
+
+gem 'naught'
