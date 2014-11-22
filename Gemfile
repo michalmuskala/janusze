@@ -33,6 +33,10 @@ group :development, :test do
   gem 'annotate'
 end
 
+group :production do
+  gem 'rails_12factor'
+end
+
 gem 'traceur-rails'
 gem 'select2-rails'
 gem 'puma'
