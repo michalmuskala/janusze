@@ -8,9 +8,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 
-gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
-gem 'pry-byebug'
-
 gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'simple_form', :github => 'plataformatec/simple_form'
@@ -26,6 +23,9 @@ gem 'cancancan'
 gem 'acts-as-taggable-on', '~> 3.4'
 
 group :development, :test do
+  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem 'pry-byebug'
+
   gem 'spring'
   gem 'better_errors'
   gem 'binding_of_caller'
