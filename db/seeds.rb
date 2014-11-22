@@ -8,7 +8,7 @@ User.create!(name: "Gosia", email: "gosia@janusz.pl", password: "12345678")
 puts "PROJECTS"
 
 p = Project.new
-p.name = "Pomoc sąsiedzka"
+p.name = "Jesienna pomoc sąsiedzka"
 p.description = <<-EOP
 Drodzy Sąsiedzi! Nadeszła jesień liście opadły z drzew, nastała jesienna chandra...
 Zadbajmy wspólnie o otoczenie, aby okolica stała się ładniejsz i sprzyjała miłym spacerom
@@ -18,6 +18,10 @@ EOP
 p.tag_list = %w(pomoc jesień sąsiedztwo inicjatywa)
 p.orbitvu_attachments << OrbitvuAttachment.new(url: "http://orbitvu.co/001/oKhU3v6xjqFT3hDHQC3RBQ/")
 p.logo = Rack::Test::UploadedFile.new('fixtures/pictures/leaves.jpg')
+p.image_attachments = [
+  ImageAttachment.new(file: Rack::Test::UploadedFile.new('fixtures/pictures/jesien.jpg')),
+  ImageAttachment.new(file: Rack::Test::UploadedFile.new('fixtures/pictures/jesien2.jpg'))
+]
 p.map_marker = ProjectLocation.new(state: "Śląskie", city: "Gliwice")
 p.user = User.find_by(email: "artur@janusz.pl")
 p.save!
@@ -34,6 +38,10 @@ EOP
 p.tag_list = %w(skarby kultura fundusze będzin)
 p.orbitvu_attachments << OrbitvuAttachment.new(url: "http://orbitvu.co/001/FBWjxR4YjUtooyHphDfuUn/")
 p.logo = Rack::Test::UploadedFile.new('fixtures/pictures/geld.jpg')
+p.image_attachments = [
+  ImageAttachment.new(file: Rack::Test::UploadedFile.new('fixtures/pictures/zloto.jpg')),
+  ImageAttachment.new(file: Rack::Test::UploadedFile.new('fixtures/pictures/monety.jpg'))
+]
 p.map_marker = ProjectLocation.new(state: "Śląskie", city: "Będzin", street: "Zamkowa", street_number: 1)
 p.user = User.find_by(email: "tomek@janusz.pl")
 p.save!
@@ -49,6 +57,10 @@ EOP
 p.tag_list = %w(samochody auta motoryzacja meet 3stawy katowice)
 p.orbitvu_attachments << OrbitvuAttachment.new(url: "http://orbitvu.co/001/axg2LECoxj55ZEHPoi9qwc/")
 p.logo = Rack::Test::UploadedFile.new('fixtures/pictures/garbus.jpg')
+p.image_attachments = [
+  ImageAttachment.new(file: Rack::Test::UploadedFile.new('fixtures/pictures/auto1.jpg')),
+  ImageAttachment.new(file: Rack::Test::UploadedFile.new('fixtures/pictures/auto2.jpg'))
+]
 p.map_marker = ProjectLocation.new(state: "Śląskie", city: "Katowice")
 p.user = User.find_by(email: "michal@janusz.pl")
 p.save!
@@ -64,6 +76,12 @@ EOP
 p.tag_list = %w(pomoc charytatywne inicjatywa dzieci mysłowice)
 p.orbitvu_attachments << OrbitvuAttachment.new(url: "http://orbitvu.co/001/h6fnEGASK9NQLsp37ewCDi/")
 p.logo = Rack::Test::UploadedFile.new('fixtures/pictures/santa.jpg')
+p.image_attachments = [
+  ImageAttachment.new(file: Rack::Test::UploadedFile.new('fixtures/pictures/mis.jpg')),
+]
+p.video_attachments = [
+  VideoAttachment.new(url: 'https://www.youtube.com/watch?v=7OsShW0AsR4')
+]
 p.map_marker = ProjectLocation.new(state: "Śląskie", city: "Mysłowice", street: "Wesoła", street_number: 21)
 p.user = User.find_by(email: "gosia@janusz.pl")
 p.save!

@@ -10,7 +10,7 @@
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li{ :class => ('active' if active_page?(:home)) }
-          %a{ :href => root_path } Home
+          %a{ :href => root_path } Główna
         %li{ :class => ('active' if active_page?(:projects)) }
           %a{ :href => projects_path } Projekty
       - unless current_user
