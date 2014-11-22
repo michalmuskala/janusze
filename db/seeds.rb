@@ -1,4 +1,10 @@
-puts "START"
+puts "USERS"
+User.create!(name: "Artur", email: "artur@janusz.pl", password: "12345678")
+User.create!(name: "Michał", email: "michal@janusz.pl", password: "12345678")
+User.create!(name: "Tomek", email: "tomek@janusz.pl", password: "12345678")
+User.create!(name: "Gosia", email: "gosia@janusz.pl", password: "12345678")
+
+puts "PROJECTS"
 
 p = Project.new
 p.name = "Pomoc sąsiedzka"
@@ -10,8 +16,9 @@ a o ile przyjemniej potem! :)
 EOP
 p.tag_list = %w(pomoc jesień sąsiedztwo inicjatywa)
 p.orbitvu_attachments << OrbitvuAttachment.new(url: "http://orbitvu.co/001/oKhU3v6xjqFT3hDHQC3RBQ/")
-p.image_attachments << ImageAttachment.new(file: Rack::Test::UploadedFile.new('fixtures/pictures/leaves.jpg'))
+p.logo = Rack::Test::UploadedFile.new('fixtures/pictures/leaves.jpg')
 p.map_marker = ProjectLocation.new(state: "Śląskie", city: "Gliwice")
+p.user = User.find_by(email: "artur@janusz.pl")
 p.save!
 puts "+1"
 # -------------------------------------------------------------
@@ -24,8 +31,9 @@ z nimi #selfie! Widzimy się na miejscu! Więcej info: www/klasykimoto.pl
 EOP
 p.tag_list = %w(samochody auta motoryzacja meet 3stawy katowice)
 p.orbitvu_attachments << OrbitvuAttachment.new(url: "http://orbitvu.co/001/axg2LECoxj55ZEHPoi9qwc/")
-p.image_attachments << ImageAttachment.new(file: Rack::Test::UploadedFile.new('fixtures/pictures/garbus.jpg'))
+p.logo = Rack::Test::UploadedFile.new('fixtures/pictures/garbus.jpg')
 p.map_marker = ProjectLocation.new(state: "Śląskie", city: "Katowice")
+p.user = User.find_by(email: "michal@janusz.pl")
 p.save!
 puts "+1"
 # -------------------------------------------------------------
@@ -37,9 +45,10 @@ oraz grami dla dzieci z Domu Dziecka w Mysłowicach. Zbiórka odbędzie się w d
 w Szkole Podstawowej nr 1 w Mysłowicach. Każdy nawet najmniejszy drobiazg się liczy! Okażmy serce!
 EOP
 p.tag_list = %w(pomoc charytatywne inicjatywa dzieci mysłowice)
-p.orbitvu_attachments << OrbitvuAttachment.new(url: "http://orbitvu.co/001/axg2LECoxj55ZEHPoi9qwc/")
-p.image_attachments << ImageAttachment.new(file: Rack::Test::UploadedFile.new('fixtures/pictures/santa.jpg'))
+p.orbitvu_attachments << OrbitvuAttachment.new(url: "http://orbitvu.co/001/h6fnEGASK9NQLsp37ewCDi/")
+p.logo = Rack::Test::UploadedFile.new('fixtures/pictures/.jpg')
 p.map_marker = ProjectLocation.new(state: "Śląskie", city: "Mysłowice", street: "Wesoła", street_number: 21)
+p.user = User.find_by(email: "gosia@janusz.pl")
 p.save!
 puts "+1"
 # -------------------------------------------------------------
@@ -52,9 +61,10 @@ które można uzyskać pod warunkiem poparcia tego przedsięwzięcia przez ponad
 Podpisz petycję już teraz: ankiety.pl/hehebedzinlol
 EOP
 p.tag_list = %w(skarby kultura fundusze będzin)
-p.orbitvu_attachments << OrbitvuAttachment.new(url: "http://orbitvu.co/001/axg2LECoxj55ZEHPoi9qwc/")
-p.image_attachments << ImageAttachment.new(file: Rack::Test::UploadedFile.new('fixtures/pictures/santa.jpg'))
+p.orbitvu_attachments << OrbitvuAttachment.new(url: "http://orbitvu.co/001/FBWjxR4YjUtooyHphDfuUn/")
+p.logo = Rack::Test::UploadedFile.new('fixtures/pictures/geld.jpg')
 p.map_marker = ProjectLocation.new(state: "Śląskie", city: "Będzin", street: "Zamkowa", street_number: 1)
+p.user = User.find_by(email: "tomek@janusz.pl")
 p.save!
 puts "+1"
 

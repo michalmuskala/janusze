@@ -164,6 +164,8 @@ GEM
     erubis (2.7.0)
     excon (0.41.0)
     execjs (2.2.2)
+    faker (1.4.3)
+      i18n (~> 0.5)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     fission (0.5.0)
@@ -230,7 +232,7 @@ GEM
     grit (2.5.0)
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
-      posix-spawn (~> 0a.3.6)
+      posix-spawn (~> 0.3.6)
     haml (4.1.0.beta.1)
       tilt
     haml-rails (0.5.3)
@@ -429,6 +431,7 @@ DEPENDENCIES
   elasticsearch-model!
   elasticsearch-rails!
   erb2haml
+  faker
   fog
   font-awesome-rails (~> 4.2.0)
   foreman!
