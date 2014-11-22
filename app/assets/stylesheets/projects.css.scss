@@ -59,6 +59,7 @@ body.projects-controller {
 
           .rating {
             float: right;
+            margin-right: 15px;
             @include flex-shrink(0);
             @include display(flex);
             // position: absolute;
