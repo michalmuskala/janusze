@@ -56,7 +56,6 @@ class ProjectsController < ApplicationController
   end
 
   def vote
-    binding.pry
     @project.vote_by :voter => current_user, :vote_weight => params[:vote].to_f
     redirect_to @project
   end

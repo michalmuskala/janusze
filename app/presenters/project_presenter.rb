@@ -28,7 +28,7 @@ class ProjectPresenter < BasePresenter
   end
 
   def rating
-    project.cached_weighted_average
+    project.cached_weighted_average.round(2)
   end
 
   def tags

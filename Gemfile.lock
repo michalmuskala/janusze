@@ -53,6 +53,12 @@ GIT
       actionpack (~> 4.0)
       activemodel (~> 4.0)
 
+GIT
+  remote: git://github.com/ryanto/acts_as_votable.git
+  revision: 3aa671aaed4aadc9d07d51ce5e77e8bd7cf0e444
+  specs:
+    acts_as_votable (0.10.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -89,7 +95,6 @@ GEM
       activerecord (>= 4.0)
       activesupport (>= 4.0)
       awesome_nested_set (>= 3.0)
-    acts_as_votable (0.10.0)
     annotate (2.6.5)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
@@ -415,7 +420,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
   acts_as_commentable_with_threading
-  acts_as_votable
+  acts_as_votable!
   annotate
   better_errors
   binding_of_caller
