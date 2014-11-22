@@ -358,8 +358,6 @@ GEM
       multi_json
       nokogiri
       uber (~> 0.0.7)
-    requirejs-rails (0.9.5)
-      railties (>= 3.1.1)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rolify (3.4.1)
@@ -456,7 +454,6 @@ DEPENDENCIES
   rails_12factor
   redcarpet
   reform
-  requirejs-rails
   rolify
   sass-rails (~> 4.0.3)
   select2-rails
