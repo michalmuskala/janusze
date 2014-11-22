@@ -28,11 +28,21 @@ class Project < ActiveRecord::Base
   mapping do
     indexes :id,                :type => :integer, :index => 'not_analyzed'
     indexes :name,              :type => :string
+    
     indexes :tags,              :type => :nested do
       indexes :name, :type => :string
+    
     end
     indexes :description_blurb, :type => :string
     indexes :rating,            :type => :float
+    
+    indexes :address,           :type => :nested do
+      indexes :state,         :type => :string
+      indexes :city,          :type => :string
+      indexes :street,        :type => :string
+      indexes :street_number, :type => :integer
+    end
+
     indexes :created_at,        :type => :date
     indexes :updated_at,        :type => :date
   end
@@ -47,7 +57,24 @@ class Project < ActiveRecord::Base
       :description_blurb => presenter.description_first_paragraph,
       :rating            => presenter.rating,
       :created_at        => self.created_at,
-      :updated_at        => self.updated_at
+      :updated_at        => self.updated_at,
+      :address           => {
+        :state             => self.map_marker.state,
+        :city              => self.map_marker.city,
+        :street            => self.map_marker.street,
+        :street_number     => self.map_marker.street_number
+      } 
     }
+  end
+
+  after_commit :index_callback, :if => :persisted?
+  after_commit :delete_from_index_callback, :on => :destroy
+
+  def index_callback
+    self.__elasticsearch__.index_document
+  end
+
+  def delete_from_index_callback
+    self.__elasticsearch__.delete_document
   end
 end

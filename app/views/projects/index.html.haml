@@ -46,6 +46,24 @@
       .panel-heading
         Filter by region
       .panel-body
+        - term_facet_to_hash(@projects.response.facets['state']).each do |facet, count|
+          - state_code = ProjectLocation.state_name_to_code(facet)
+          - if current_search_options[:state].include?(facet)
+            .facet.active
+              .facet-term
+                = facet
+              .facet-details
+                .facet-count
+                  = count
+                %a.facet-remove{ :href => search_url(:without => { :state => [state_code] }) }
+                  x
+          - else
+            %a.facet{ :href => search_url(:with => { :state => [state_code] }) }
+              .facet-term
+                = facet
+              .facet-details
+                .facet-count
+                  = count      
     .filter-by-projected-cost.panel.panel-default
       .panel-heading
         Filter by projected cost

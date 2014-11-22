@@ -21,6 +21,7 @@
 class ProjectLocation < ActiveRecord::Base
   STATES = Carmen::Country.coded('PL').subregions
   STATE_NAME_TO_CODE = Hash[STATES.map { |state| [state.name, state.code.downcase] }]
+  STATE_NAME_TO_CODE_DOWNCASED = Hash[STATES.map { |state| [state.name.mb_chars.downcase.normalize.to_s, state.code.downcase] }]
   CODE_TO_STATE = Hash[STATES.map { |state| [state.code.downcase, state] }]
 
   belongs_to :project
@@ -37,7 +38,7 @@ class ProjectLocation < ActiveRecord::Base
   end
 
   def self.state_name_to_code(state_name)
-    STATE_TO_CODE[state_name.mb_chars.downcase.normalize.to_s]
+    STATE_NAME_TO_CODE_DOWNCASED[state_name.mb_chars.downcase.normalize.to_s]
   end
 
   def self.code_to_state(state_code)

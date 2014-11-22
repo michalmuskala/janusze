@@ -156,6 +156,12 @@ class ProjectsController < ApplicationController
               :field => 'tags.name'
             },
             :nested => 'tags'
+          },
+          :state => {
+            :terms => {
+              :field => 'address.state'
+            },
+            :nested => 'address'
           }
         }
       }
