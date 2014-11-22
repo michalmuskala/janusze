@@ -17,4 +17,8 @@
 
 class Attachment < ActiveRecord::Base
   belongs_to :project
+
+  def _destroy=(value)
+    mark_for_destruction if value == '1'
+  end
 end

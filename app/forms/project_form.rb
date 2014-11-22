@@ -12,13 +12,16 @@ class ProjectForm < Reform::Form
 
   collection :video_attachments, populate_if_empty: VideoAttachment do
     property :url, validates: { presence: true }
+    property :_destroy
   end
 
   collection :image_attachments, populate_if_empty: ImageAttachment do
     property :file, validates: { presence: true }
+    property :_destroy
   end
 
   collection :orbitvu_attachments, populate_if_empty: OrbitvuAttachment do
     property :url, validates: { presence: true }
+    property :_destroy
   end
 end

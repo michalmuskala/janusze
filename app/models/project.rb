@@ -17,9 +17,9 @@ class Project < ActiveRecord::Base
   acts_as_commentable
 
   has_one :map_marker, class_name: "ProjectLocation"
-  has_many :video_attachments
-  has_many :image_attachments
-  has_many :orbitvu_attachments
+  has_many :video_attachments, autosave: true
+  has_many :image_attachments, autosave: true
+  has_many :orbitvu_attachments, autosave: true
 
   def address
     map_marker.try(:address) || "None"
@@ -28,14 +28,14 @@ class Project < ActiveRecord::Base
   mapping do
     indexes :id,                :type => :integer, :index => 'not_analyzed'
     indexes :name,              :type => :string
-    
+
     indexes :tags,              :type => :nested do
       indexes :name, :type => :string
-    
+
     end
     indexes :description_blurb, :type => :string
     indexes :rating,            :type => :float
-    
+
     indexes :address,           :type => :nested do
       indexes :state,         :type => :string
       indexes :city,          :type => :string
@@ -58,12 +58,12 @@ class Project < ActiveRecord::Base
       :rating            => presenter.rating,
       :created_at        => self.created_at,
       :updated_at        => self.updated_at,
-      :address           => {
+      :address           => (({
         :state             => self.map_marker.state,
         :city              => self.map_marker.city,
         :street            => self.map_marker.street,
         :street_number     => self.map_marker.street_number
-      } 
+      }) if self.map_marker.present?)
     }
   end
 

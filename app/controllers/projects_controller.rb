@@ -35,8 +35,8 @@ class ProjectsController < ApplicationController
 
     if @form.validate(params[:project])
       @form.save
-      respond_with(@project)
     end
+    respond_with(@project)
   end
 
   def update
@@ -44,8 +44,8 @@ class ProjectsController < ApplicationController
 
     if @form.validate(params[:project])
       @form.save
-      respond_with(@project)
     end
+    respond_with(@project)
   end
 
   def destroy
@@ -59,7 +59,7 @@ class ProjectsController < ApplicationController
 
     tags = ::Tags.all_tags_for(for_what, :starting_with => term)
     # unless tags.map{|t| t[:text]}.include? term then
-    #   tags = [{ 
+    #   tags = [{
     #     :text => term,
     #     :id => term,
     #     :count => 0
@@ -113,7 +113,7 @@ class ProjectsController < ApplicationController
     def generate_query
       @query ||= begin
         if (query = current_search_options[:query]).present?
-          { 
+          {
             :query => {
               :bool => {
                 :should => [
