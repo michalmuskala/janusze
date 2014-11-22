@@ -10,6 +10,12 @@
 #
 
 class Project < ActiveRecord::Base
+  has_one :map_marker, class_name: "ProjectLocation"
+
   acts_as_taggable
   acts_as_commentable
+
+  def address
+    map_marker.try(:address) || "None"
+  end
 end

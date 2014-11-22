@@ -11,26 +11,40 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @marker = @project.map_marker.coords
     respond_with(@project)
   end
 
   def new
     @project = Project.new
+    @project.build_map_marker
+    @form = ProjectForm.new(@project)
     respond_with(@project)
   end
 
   def edit
+    @form = ProjectForm.new(@project)
   end
 
   def create
-    @project = Project.new(project_params)
-    @project.save
-    respond_with(@project)
+    @project = Project.new
+    @project.build_map_marker
+    @form = ProjectForm.new(@project)
+
+    if @form.validate(params[:project])
+      @form.save
+      respond_with(@project)
+    end
   end
 
   def update
-    @project.update(project_params)
-    respond_with(@project)
+
+    @form = ProjectForm.new(@project)
+
+    if @form.validate(params[:project])
+      @form.save
+      respond_with(@project)
+    end
   end
 
   def destroy
@@ -42,9 +56,12 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find(params[:id])
+    @project.try(:map_marker) || @project.build_map_marker
   end
 
   def project_params
-    params.require(:project).permit(:name, :description, :tag_list)
+    params
+      .require(:project)
+      .permit(:name, :description, :tag_list, map_marker: [:state, :city, :street, :street_number])
   end
 end

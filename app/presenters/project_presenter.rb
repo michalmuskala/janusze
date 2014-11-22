@@ -44,6 +44,10 @@ class ProjectPresenter < BasePresenter
       .map { |comment| h.render comment }.join.html_safe
   end
 
+  def address
+    project.address.blank? ? "None" : project.address
+  end
+
   def show_link
     h.link_to('Show', project)
   end

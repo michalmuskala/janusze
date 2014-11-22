@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.1.4"
+ruby "2.1.5"
 
 gem 'rails', '4.1.8'
 gem 'pg'
@@ -24,6 +24,11 @@ gem 'cancancan'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'acts_as_commentable_with_threading'
 gem 'acts_as_votable'
+
+gem 'underscore-rails'
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'reform'
 
 group :development, :test do
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'

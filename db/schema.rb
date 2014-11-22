@@ -16,6 +16,14 @@ ActiveRecord::Schema.define(version: 20141122035314) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "project_locations", force: true do |t|
+    t.string   "state"
+    t.string   "city"
+    t.string   "street"
+    t.string   "street_number"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.integer  "project_id"
   create_table "comments", force: true do |t|
     t.integer  "commentable_id"
     t.string   "commentable_type"
@@ -37,6 +45,7 @@ ActiveRecord::Schema.define(version: 20141122035314) do
     t.float    "cached_weighted_average", default: 0.0
   end
 
+  add_index "project_locations", ["project_id"], name: "index_project_locations_on_project_id", using: :btree
   add_index "comments", ["cached_votes_down"], name: "index_comments_on_cached_votes_down", using: :btree
   add_index "comments", ["cached_votes_score"], name: "index_comments_on_cached_votes_score", using: :btree
   add_index "comments", ["cached_votes_total"], name: "index_comments_on_cached_votes_total", using: :btree

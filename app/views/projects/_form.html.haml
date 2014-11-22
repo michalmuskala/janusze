@@ -1,5 +1,12 @@
-= simple_form_for @project, :html => { :class => "form-horizontal", :role => "form" } do |f|
+= simple_form_for @form, :html => { :class => "form-horizontal", :role => "form" } do |f|
   = f.input :name
   = f.input :tag_list
   = f.input :description
+
+  = f.simple_fields_for :map_marker do |mm|
+    = mm.input :state
+    = mm.input :city
+    = mm.input :street
+    = mm.input :street_number
+
   = f.button :submit
