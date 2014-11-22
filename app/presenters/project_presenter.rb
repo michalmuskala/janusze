@@ -64,18 +64,21 @@ class ProjectPresenter < BasePresenter
     h.link_to('Destroy', project, :data => { :confirm => 'Are you sure?' }, :method => :delete)
   end
 
+  def logo_image_url
+    project.logo.url
+  end
+
   private
+    def video_attachments
+      project.video_attachments.map { |video| h.render video }.join.html_safe
+    end
 
-  def video_attachments
-    project.video_attachments.map { |video| h.render video }.join.html_safe
-  end
+    def orbitvu_attachments
+      project.orbitvu_attachments.map { |animation| h.render animation }
+        .join.html_safe
+    end
 
-  def orbitvu_attachments
-    project.orbitvu_attachments.map { |animation| h.render animation }
-      .join.html_safe
-  end
-
-  def image_attachments
-    project.image_attachments.map { |image| h.render image }.join.html_safe
-  end
+    def image_attachments
+      project.image_attachments.map { |image| h.render image }.join.html_safe
+    end
 end

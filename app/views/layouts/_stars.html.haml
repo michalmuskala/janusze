@@ -1,6 +1,11 @@
-- wholes.times do
-  %i.fa.fa-star.starclr
-- halfs.times do
-  %i.fa.fa-star-half-full
-- empties.times do
-  %i.fa.fa-star-o
+.stars
+  .wholes
+    - wholes.times do
+      %i.fa.fa-star.starclr
+  - if halfs > 0
+    .halfs
+      - halfs.times do
+        %i.fa.fa-star-half-full
+  .empties
+    - empties.times do
+      %i.fa.fa-star-o

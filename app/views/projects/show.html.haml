@@ -1,5 +1,27 @@
 - present(@project) do |project|
-  .page-header
+  - content_for(:jumbotron) do
+    .jumbotron{ :style => "background-image: url(#{project.logo_image_url});" }
+      .title-overlay
+        .container
+          .title
+            %h1
+              = project.name
+              %small.author
+                by
+                = project.user_profile_link
+          .details
+            .tags
+              - project.tag_names.each do |tag|
+                %a.label.label-success{ :href => projects_path(:tags => tag) }
+                  = tag
+            .rating
+              = stars_for_rating(project.rating)
+              .number
+                = surround('(', ')') do
+                  = project.rating
+
+
+  -# .page-header
     -# = link_to edit_project_path(@project), :class => 'btn btn-primary pull-right' do
       %span.glyphicon.glyphicon-pencil
       Edit
@@ -29,10 +51,6 @@
         = render 'comments/form', comment: Comment.new, commentable: @project
 
     .col-lg-3
-      .tags
-        - project.tag_names.each do |tag|
-          %span.label.label-primary
-            = tag
       %dt Location:
       %dd= project.address
       .map{ :style => 'margin-top: 15px;'}

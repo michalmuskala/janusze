@@ -4,6 +4,98 @@
 
 body.projects-controller {
   &.show-action {
+    .jumbotron {
+      @include display(flex);
+
+      min-height: 300px;
+      background-size: cover;
+      background-position: 0px;
+      padding: 0px;
+
+      .title-overlay {
+        @include align-self(flex-end);
+
+        width: 100%;
+        background-color: rgba(0,0,0,0.6);
+        color: white;
+        padding: 20px;
+
+        .title {
+          @include flex-grow(1);
+
+          h1 {
+            font-size: 36pt;
+            margin-top: 0px;
+
+            .author {
+              // float: left;
+              // margin-left: 10px;
+              font-size: 13pt;
+
+              a {
+                font-weight: normal;
+                @extend .label;
+                @extend .label-default;
+              }
+            }
+          }
+        }
+
+        .details {
+          @include clearfix;
+          @include display(flex);
+
+          .tags {
+            @include flex-grow(1);
+
+            font-size: 13pt;
+            // margin-bottom: 20px;
+            margin-left: 15px;
+
+            .label {
+              margin-right: 10px;
+            }
+          }
+
+          .rating {
+            float: right;
+            @include flex-shrink(0);
+            @include display(flex);
+            // position: absolute;
+            // right: 0px;
+            // bottom: -4px;
+
+            .stars {
+              font-size: 22pt;
+
+              .wholes, .halfs {
+                display: inline-block;
+                color: $brand-warning;
+              }
+
+              .empties {
+                display: inline-block;
+                color: $gray-light;
+              }
+            }
+
+            .number {
+              @include flex-shrink(0);
+              @include align-items(flex-end);
+              @include display(flex);
+
+              margin-left: 10px;
+              padding-bottom: 4px;
+            }
+          }
+        }
+      }
+    }
+
+    .page-header {
+      margin-top: 0px;
+    }
+    
     .project-heading {
       @include display(flex);
 
@@ -36,14 +128,6 @@ body.projects-controller {
     		background: #aaa;
   	  }
   	}
-
-    .tags {
-      margin-bottom: 20px;
-
-      .label {
-        margin-right: 10px;
-      }
-    }
 
     #comments {
       .media {

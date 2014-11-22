@@ -1,3 +1,17 @@
+- content_for(:jumbotron) do
+  .jumbotron
+    .subtle-overlay
+    .container
+      .text-center
+        %h1 Hello, Janusze!
+        %p
+          To dla was zmieniamy Sląsk
+          %u na lepsze!
+        %p
+          Cause we like trains!!!
+        %p.top-space
+          = link_to "Add your own project", new_project_path, class: "btn btn-success btn-lg"
+
 .row
   = render partial: "project_tile", collection: @projects
 .row

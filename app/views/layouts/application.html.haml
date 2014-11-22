@@ -2,11 +2,14 @@
 %html
   %head
     %title Janusz
+    %link{ :href => '//fonts.googleapis.com/css?family=Lato:300,400,700', :rel => 'stylesheet', :type => 'text/css' }
     = stylesheet_link_tag    'application', :media => 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body{ :class => [controller_name(:css), action_name(:css)] }
     = render 'layouts/navigation'
+    = yield :jumbotron
+
     .container
       - flash.each do |key, value|
         .alert.alert-dismissible{ :class => alert_class(key), :role => 'alert' }

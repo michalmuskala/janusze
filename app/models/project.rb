@@ -28,7 +28,7 @@ class Project < ActiveRecord::Base
   has_many :orbitvu_attachments, autosave: true
   belongs_to :user
 
-  mount_uploader :logo, ImageUploader
+  mount_uploader :logo, LogoImageUploader
 
   def address
     map_marker.try(:address) || "None"

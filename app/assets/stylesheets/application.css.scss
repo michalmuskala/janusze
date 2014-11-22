@@ -4,6 +4,7 @@
  */
 
 @import "bootstrap-sprockets";
+@import "./bootstrap-variables";
 @import "bootstrap";
 @import "font-awesome";
 @import "bourbon";
@@ -35,8 +36,12 @@ body {
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
 
+body {
+  padding-top: 50px;
+}
+
 body > .container {
-  padding: 60px 15px 60px 15px;
+  padding: 00px 15px 60px 15px;
 }
 .container .text-muted {
   margin: 20px 0;

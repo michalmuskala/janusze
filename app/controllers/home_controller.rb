@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  layout 'homepage_special'
+  # layout 'homepage_special'
   active_page :home
 
   def index
