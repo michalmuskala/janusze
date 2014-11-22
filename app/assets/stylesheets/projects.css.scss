@@ -4,17 +4,17 @@
 
 body.projects-controller {
   &.show-action {
-	.map {
-	  width: 100%;
+  	.map {
+  	  width: 100%;
 
-	  #map-canvas {
-		border: 1px solid #333;
-		border-radius: 5px;
-		width: 100%;
-		height: 400px;
-		background: #aaa;
-	  }
-	}
+  	  #map-canvas {
+  		border: 1px solid #333;
+  		border-radius: 5px;
+  		width: 100%;
+  		height: 400px;
+  		background: #aaa;
+  	  }
+  	}
 
     .tags {
       margin-left: 10px;
