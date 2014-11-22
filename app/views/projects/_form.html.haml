@@ -4,7 +4,7 @@
   = f.input :description, :as => :text
 
   = f.simple_fields_for :map_marker do |mm|
-    = mm.input :state, :as => :select, :collection => ProjectLocation::STATE_NAME_TO_CODE.each.to_a
+    = mm.input :state, :as => :select, :collection => ProjectLocation::STATE_NAME_TO_CODE.map { |name, _| [name, name] }
     = mm.input :city
     = mm.input :street
     = mm.input :street_number

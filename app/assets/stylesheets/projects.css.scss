@@ -29,19 +29,33 @@ body.projects-controller {
   	  width: 100%;
 
   	  #map-canvas {
-  		border: 1px solid #333;
-  		border-radius: 5px;
-  		width: 100%;
-  		height: 400px;
-  		background: #aaa;
+    		border: 1px solid #333;
+    		border-radius: 5px;
+    		width: 100%;
+    		height: 250px;
+    		background: #aaa;
   	  }
   	}
 
     .tags {
-      margin-left: 10px;
+      margin-bottom: 20px;
 
       .label {
         margin-right: 10px;
+      }
+    }
+
+    #comments {
+      .media {
+        @include display(flex); 
+
+        .media-left {
+          @include flex-shrink(0);
+        }
+
+        .media-body {
+          @include flex-grow(1);
+        }
       }
     }
   }

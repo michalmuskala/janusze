@@ -1,6 +1,4 @@
 - present(@project) do |project|
-  .map
-    #map-canvas
   .page-header
     -# = link_to edit_project_path(@project), :class => 'btn btn-primary pull-right' do
       %span.glyphicon.glyphicon-pencil
@@ -15,21 +13,30 @@
         = stars_for_rating(project.rating)
         = surround('(', ')') do
           = project.rating
-    .tags
-      - project.tag_names.each do |tag|
-        %span.label.label-primary
-          = tag
+  .row
+    .col-lg-9
+      #description
+        = project.description
 
-    %dt Description:
-    %dd= project.description
-    %dt Address:
-    %dd= project.address
+      #attachments.row{ :style => 'margin-top: 30px;' }
+        .col-lg-12
+          %h4 Attachments
+          = project.attachments
 
-  #attachments.row= project.attachments
+      #comments{ :style => 'margin-top: 35px;'}
+        %h4 Comments
+        = project.comments
+        = render 'comments/form', comment: Comment.new, commentable: @project
 
-  #comments
-    = project.comments
-    = render 'comments/form', comment: Comment.new, commentable: @project
+    .col-lg-3
+      .tags
+        - project.tag_names.each do |tag|
+          %span.label.label-primary
+            = tag
+      %dt Location:
+      %dd= project.address
+      .map{ :style => 'margin-top: 15px;'}
+        #map-canvas
 
 %script{src:"//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry", type:"text/javascript"}
 %script{src:'//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js', type:'text/javascript'}
