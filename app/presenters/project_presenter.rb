@@ -28,7 +28,7 @@ class ProjectPresenter < BasePresenter
   end
 
   def rating
-    @rating ||= Random.rand(2.0..6.0).round(2)
+    project.cached_weighted_average
   end
 
   def tags

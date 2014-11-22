@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'projects/tags' => 'projects#tags'
 
   resources :projects do
+    put :vote, on: :member
     resources :comments, only: [:create], shallow: true do
       put :upvote, on: :member
       put :downvote, on: :member

@@ -5,14 +5,15 @@ module ApplicationHelper
     "alert-#{ALERT_CLASSES[key.to_sym]}"
   end
 
-  def stars_for_rating(rating)
+  def stars_for_rating(rating, url = nil)
     wholes  = rating.to_i
     halfs   = (rating - wholes >= 0.5) ? 1 : 0
     empties = 6 - wholes - halfs
 
     render :partial => 'layouts/stars', :locals => { :wholes  => wholes,
                                                      :halfs   => halfs,
-                                                     :empties => empties }
+                                                     :empties => empties,
+                                                     :url     => url}
   end
 
   def search_url(with:{}, without:{}, set:{}, unset:{})

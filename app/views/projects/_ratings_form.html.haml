@@ -1,0 +1,5 @@
+= form_tag vote_project_path(project), method: :put, class: 'form-inline' do
+  .form-group
+    = label_tag :vote, 'Vote', class: 'sr-only'
+    = select_tag :vote, options_for_select((0..6).step(0.5))
+  = submit_tag 'Submit', class: 'btn btn-primary btn-sm'

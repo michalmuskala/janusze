@@ -2,18 +2,32 @@
 #
 # Table name: projects
 #
-#  id             :integer          not null, primary key
-#  name           :string(255)
-#  description    :text
-#  created_at     :datetime
-#  updated_at     :datetime
-#  projected_cost :decimal(19, 2)
-#  user_id        :integer
-#  logo           :string(255)
+#  id                      :integer          not null, primary key
+#  name                    :string(255)
+#  description             :text
+#  created_at              :datetime
+#  updated_at              :datetime
+#  projected_cost          :decimal(19, 2)
+#  user_id                 :integer
+#  logo                    :string(255)
+#  cached_votes_total      :integer          default(0)
+#  cached_votes_score      :integer          default(0)
+#  cached_votes_up         :integer          default(0)
+#  cached_votes_down       :integer          default(0)
+#  cached_weighted_score   :integer          default(0)
+#  cached_weighted_total   :integer          default(0)
+#  cached_weighted_average :float            default(0.0)
 #
 # Indexes
 #
-#  index_projects_on_user_id  (user_id)
+#  index_projects_on_cached_votes_down        (cached_votes_down)
+#  index_projects_on_cached_votes_score       (cached_votes_score)
+#  index_projects_on_cached_votes_total       (cached_votes_total)
+#  index_projects_on_cached_votes_up          (cached_votes_up)
+#  index_projects_on_cached_weighted_average  (cached_weighted_average)
+#  index_projects_on_cached_weighted_score    (cached_weighted_score)
+#  index_projects_on_cached_weighted_total    (cached_weighted_total)
+#  index_projects_on_user_id                  (user_id)
 #
 
 class Project < ActiveRecord::Base
@@ -21,6 +35,7 @@ class Project < ActiveRecord::Base
 
   acts_as_taggable
   acts_as_commentable
+  acts_as_votable
 
   has_one :map_marker, class_name: "ProjectLocation"
   has_many :video_attachments, autosave: true

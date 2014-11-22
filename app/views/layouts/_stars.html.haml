@@ -1,11 +1,11 @@
 .stars
   .wholes
     - wholes.times do
-      %i.fa.fa-star.starclr
+      = link_to_if url, fa_icon('star', class: 'starclr'), url
   - if halfs > 0
     .halfs
       - halfs.times do
-        %i.fa.fa-star-half-full
+        = link_to_if url, fa_icon('star-half-full'), url
   .empties
     - empties.times do
-      %i.fa.fa-star-o
+      = link_to_if url, fa_icon('star-o'), url

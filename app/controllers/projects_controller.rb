@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :vote]
   before_action :extract_search_options, :only => [:index]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :vote]
 
   respond_to :html
 
@@ -53,6 +53,12 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_with(@project)
+  end
+
+  def vote
+    binding.pry
+    @project.vote_by :voter => current_user, :vote_weight => params[:vote].to_f
+    redirect_to @project
   end
 
   def tags

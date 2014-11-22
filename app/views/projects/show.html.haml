@@ -15,7 +15,7 @@
                 %a.label.label-success{ :href => projects_path(:tags => tag) }
                   = tag
             .rating
-              = stars_for_rating(project.rating)
+              = stars_for_rating(project.rating, '#')
               .number
                 = surround('(', ')') do
                   = project.rating
@@ -31,10 +31,6 @@
         %small
           by
           = project.user_profile_link
-      .rating
-        = stars_for_rating(project.rating)
-        = surround('(', ')') do
-          = project.rating
   .row
     .col-lg-9
       #description
@@ -51,8 +47,8 @@
         = render 'comments/form', comment: Comment.new, commentable: @project
 
     .col-lg-3
-      %dt Location:
-      %dd= project.address
+      .location
+        = fa_icon('globe', text: project.address)
       .map{ :style => 'margin-top: 15px;'}
         #map-canvas
 

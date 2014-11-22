@@ -95,7 +95,7 @@ body.projects-controller {
     .page-header {
       margin-top: 0px;
     }
-    
+
     .project-heading {
       @include display(flex);
 
@@ -131,7 +131,7 @@ body.projects-controller {
 
     #comments {
       .media {
-        @include display(flex); 
+        @include display(flex);
 
         .media-left {
           @include flex-shrink(0);
@@ -203,7 +203,7 @@ body.projects-controller {
     .projects {
       .project {
         @extend .media;
-        
+
         .project-image {
           @extend .media-left;
 
