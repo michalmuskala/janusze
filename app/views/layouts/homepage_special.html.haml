@@ -7,6 +7,19 @@
     = csrf_meta_tags
   %body{ :class => [controller_name(:css), action_name(:css)] }
     = render 'layouts/navigation'
+    I AM IRON MAN!
+    .jumbotron
+      .container
+        .text-center
+          %h1 Hello, Janusze!
+          %p 
+            To dla was zmieniamy Sląsk 
+            %u na lepsze!
+          %p 
+            Cause we like trains!!!
+          %p
+            = link_to "Learn More", projects_path, class: "btn btn-default btn-large"
+
     .container
       - flash.each do |key, value|
         .alert.alert-dismissible{ :class => alert_class(key), :role => 'alert' }
@@ -15,6 +28,5 @@
               &times;
             %span.sr-only Close
           = flash[key]
-
       = yield
     = render 'layouts/footer'

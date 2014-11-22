@@ -1,0 +1,8 @@
+.col-sm-6
+  = link_to project_tile do
+    .thumbnail
+      %img{src: "http://placekitten.com/g/600/350", alt: "Super project"}
+      .caption.text-center
+        %h3= project_tile.name
+        %span.label.label-info= project_tile.map_marker.try(:city)
+      .text-right

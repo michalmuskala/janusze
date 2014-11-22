@@ -6,7 +6,6 @@ class ProjectsController < ApplicationController
   active_page :projects
 
   def index
-    binding.pry
     @projects = Project.search(index_search_query)
     respond_with(@projects)
   end
@@ -39,7 +38,6 @@ class ProjectsController < ApplicationController
   end
 
   def update
-
     @form = ProjectForm.new(@project)
 
     if @form.validate(params[:project])
