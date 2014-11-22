@@ -55,3 +55,5 @@ gem 'elasticsearch-model', :github => 'elasticsearch/elasticsearch-rails'
 gem 'nokogiri'
 
 gem 'truncate_html'
+gem 'requirejs-rails'
+gem 'jquery-cdn'

@@ -1,47 +1,54 @@
 .page-header.clearfix
-  = link_to new_project_path, :class => 'btn btn-primary pull-right' do
+  = link_to new_project_path, :class => 'btn btn-primary' do
     %span.glyphicon.glyphicon-plus
     New Project
+  .search-sort-by-type.pull-right
+    %select#search-sort-by-type.dont-select2ify
+      %option{ :data => { :field => 'popularity', :direction => 'asc' } }
+        Popularity
+      %option{ :data => { :field => 'popularity', :direction => 'desc' } }
+        Popularity
+      %option{ :data => { :field => 'rating', :direction => 'asc' } }
+        Rating
+      %option{ :data => { :field => 'rating', :direction => 'desc' } }
+        Rating
+      %option{ :data => { :field => 'date', :direction => 'asc' } }
+        Date
+      %option{ :data => { :field => 'date', :direction => 'desc' } }
+        Date
 
-.projects
-  - present(@projects).each do |project|
-    .project
-      .project-image
-        %img{ :src => 'http://placehold.it/160x160' }
-      .project-details
-        .project-heading
-          .title
-            = project.name
-            %small
-              by
-              = project.user_profile_link
-          .rating
-            = stars_for_rating(project.rating)
-            = surround('(', ')') do
-              = project.rating
-        %p
-          = project.description_blurb
-        %p.read-more
-          = project.link('(read more)')
-
--# 
-  .table-responsive
-    %table.table.table-striped.table-bordered.table-hover
-      %thead
-        %tr
-          %th Name
-          %th Tags
-          %th Description
-          %th
-          %th
-          %th
-
-      %tbody
-        - present(@projects).each do |project|
-          %tr
-            %td= project.name
-            %td= project.tags
-            %td= project.description
-            %td= project.show_link
-            %td= project.edit_link
-            %td= project.destroy_link
+.project-search.row
+  .filters.col-lg-3
+    .filter-by-tags.panel.panel-default
+      .panel-heading
+        Filter by tags
+      .panel-body
+    .filter-by-region.panel.panel-default
+      .panel-heading
+        Filter by region
+      .panel-body
+    .filter-by-projected-cost.panel.panel-default
+      .panel-heading
+        Filter by projected cost
+      .panel-body
+  .results.col-lg-9
+    .projects
+      - present(@projects).each do |project|
+        .project
+          .project-image
+            %img{ :src => 'http://placehold.it/160x160' }
+          .project-details
+            .project-heading
+              .title
+                = project.name
+                %small
+                  by
+                  = project.user_profile_link
+              .rating
+                = stars_for_rating(project.rating)
+                = surround('(', ')') do
+                  = project.rating
+            %p
+              = project.description_blurb
+            %p.read-more
+              = project.link('(read more)')

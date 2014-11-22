@@ -1,3 +1,8 @@
+/*
+ *= require select2
+ *= require select2-bootstrap
+ */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -7,10 +12,6 @@
 @import "bourbon";
 
 @import "projects";
-
-//= require select2
-//= require select2-bootstrap
-//= require devise_bootstrap_views
 
 /* Sticky footer styles
 -------------------------------------------------- */

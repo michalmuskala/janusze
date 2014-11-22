@@ -171,6 +171,8 @@ GEM
     jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
+    jquery-cdn (2.1.1)
+      sprockets (>= 2)
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -239,6 +241,8 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.3.2)
     redcarpet (3.2.0)
+    requirejs-rails (0.9.5)
+      railties (>= 3.1.1)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rolify (3.4.1)
@@ -304,6 +308,7 @@ DEPENDENCIES
   haml-rails
   jazz_hands!
   jbuilder (~> 2.0)
+  jquery-cdn
   jquery-rails
   nokogiri
   pg
@@ -313,6 +318,7 @@ DEPENDENCIES
   rails (= 4.1.8)
   rails_12factor
   redcarpet
+  requirejs-rails
   rolify
   sass-rails (~> 4.0.3)
   select2-rails
