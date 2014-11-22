@@ -1,11 +1,12 @@
 class ProjectForm < Reform::Form
-  property :name,        on: :project
+  property :name,        on: :project, validates: { presence: true }
   property :tag_list,    on: :project
-  property :description, on: :project
+  property :description, on: :project, validates: { presence: true }
+  property :logo,        on: :project, validates: { presence: true }
 
   property :map_marker do
-    property :state,         on: :location
-    property :city,          on: :location
+    property :state,         on: :location, validates: { presence: true }
+    property :city,          on: :location, validates: { presence: true }
     property :street,        on: :location
     property :street_number, on: :location
   end

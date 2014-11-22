@@ -9,6 +9,7 @@
 #  updated_at     :datetime
 #  projected_cost :decimal(19, 2)
 #  user_id        :integer
+#  logo           :string(255)
 #
 # Indexes
 #
@@ -26,6 +27,8 @@ class Project < ActiveRecord::Base
   has_many :image_attachments, autosave: true
   has_many :orbitvu_attachments, autosave: true
   belongs_to :user
+
+  mount_uploader :logo, ImageUploader
 
   def address
     map_marker.try(:address) || "None"
