@@ -48,7 +48,7 @@
       .panel-body
         - term_facet_to_hash(@projects.response.facets['state']).each do |facet, count|
           - state_code = ProjectLocation.state_name_to_code(facet)
-          - if current_search_options[:state].include?(facet)
+          - if current_search_options[:state].include?(state_code)
             .facet.active
               .facet-term
                 = facet

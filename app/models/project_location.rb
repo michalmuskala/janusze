@@ -44,4 +44,8 @@ class ProjectLocation < ActiveRecord::Base
   def self.code_to_state(state_code)
     CODE_TO_STATE[state_code.downcase]
   end
+
+  def self.code_to_state_name_downcased(state_code)
+    CODE_TO_STATE[state_code.downcase].name.mb_chars.downcase.normalize.to_s
+  end
 end

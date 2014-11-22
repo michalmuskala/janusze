@@ -115,6 +115,7 @@ class ProjectsController < ApplicationController
     def extract_search_options
       current_search_options[:query] = params[:query] if params[:query]
       current_search_options[:tags]  = params[:tags].split(',').map(&:downcase).uniq if params[:tags]
+      current_search_options[:state] = params[:state].split(',').map(&:downcase).uniq if params[:state]
     end
 
     def generate_query
@@ -142,7 +143,7 @@ class ProjectsController < ApplicationController
 
     def generate_filters
       @filters ||= begin
-        filters = [tag_filter]
+        filters = [tag_filter, state_filter]
 
         {
           :filter => filters.filter(&:present?).fold({}) do |acc, filter|
@@ -187,6 +188,23 @@ class ProjectsController < ApplicationController
                 :path => 'tags',
                 :filter => {
                   :terms => { :'tags.name' => tags }
+                }
+              }
+            }
+          ]
+        }
+      end
+    end
+
+    def state_filter
+      if (states = current_search_options[:state]).present?
+        {
+          :and => [
+            {
+              :nested => {
+                :path => 'address',
+                :filter => {
+                  :terms => { :'address.state' => states.map { |code| ProjectLocation.code_to_state_name_downcased(code) } }
                 }
               }
             }
