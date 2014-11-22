@@ -34,15 +34,10 @@
 
 :javascript
   var handler = Gmaps.build('Google');
-  handler.buildMap({ internal: {id: 'map-canvas'} }, function(){
-    if(navigator.geolocation)
-      navigator.geolocation.getCurrentPosition(displayOnMap);
-  });
-
-  function displayOnMap(position){
+  handler.buildMap({ internal: {id: 'map-canvas'}}, function(){
     var marker = handler.addMarker({
       lat: #{@marker[:lat] || 0},
       lng: #{@marker[:lng] || 0}
     });
     handler.map.centerOn(marker);
-  };
+  });

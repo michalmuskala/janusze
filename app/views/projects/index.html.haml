@@ -34,7 +34,8 @@
         - project = present(db_project)
         .project
           .project-image
-            %img{ :src => 'http://placehold.it/160x160' }
+            = link_to db_project do
+              %img{ :src => 'http://placehold.it/160x160' }
           .project-details
             .project-heading
               .title
